@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Communiquer qvec le bot Wit.ai</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <input type="text" [(ngModel)]="message" placeholder="parlez au bot">
+  <input type="button" (click)="say()">
+</ion-content>

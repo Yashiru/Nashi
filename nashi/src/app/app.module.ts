@@ -1,20 +1,19 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+
+import { WitAiService } from '../services/Wit-ai.service';
+import { Ingrediant } from '../models/Ingrediant';
+import { WitIngrediant } from '../models/factory/WitIngrediant';
+
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
+import { WitTest } from '../pages/witTest/witTest'
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
     SpeechRecognitionPage,
+    WitTest
 
   ],
   imports: [
@@ -23,13 +22,18 @@ import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/Speech
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
     SpeechRecognitionPage,
+    WitTest
 
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler
+    },
+    WitAiService,
+    Ingrediant,
+    WitIngrediant
+  ]
 })
 export class AppModule {}
