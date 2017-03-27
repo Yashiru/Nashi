@@ -28,20 +28,11 @@ export class SpeechRecognitionPage {
         });
         this.recognition.onresult = (event => {
             if (event.results.length > 0) {
-              this.displayResult(event.results[0][0].transcript);
+              this.speekResult = event.results[0][0].transcript;
             }
         });
 
         this.recognition.start();
-    }
-
-    public recognise(): void{
-      this.recognition.start();
-    }
-
-    public displayResult(result: String): void{
-      this.speekResult = result;
-    //  this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }
 
 
