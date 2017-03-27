@@ -3,6 +3,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
 
+import { NashiBot } from '../services/NashiBot.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,6 +20,10 @@ import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/Speech
     SpeechRecognitionPage,
 
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers:
+  [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    NashiBot,
+  ]
 })
 export class AppModule {}
