@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NashiBot } from '../../services/NashiBot.service';
+
 
 declare var SpeechRecognition: any;
 
@@ -14,7 +16,7 @@ export class SpeechRecognitionPage {
     started: String = "";
     speekResult: String = "";
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, private bot: NashiBot) {
         this.showSearchButton = true;
         this.speechData = "";
 
@@ -28,20 +30,12 @@ export class SpeechRecognitionPage {
         });
         this.recognition.onresult = (event => {
             if (event.results.length > 0) {
-              this.displayResult(event.results[0][0].transcript);
+              let msg: string = event.results[0][0].transcript;
+              this.bot.speek(msg);
             }
         });
 
         this.recognition.start();
-    }
-
-    public recognise(): void{
-      this.recognition.start();
-    }
-
-    public displayResult(result: String): void{
-      this.speekResult = result;
-    //  this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }
 
 
