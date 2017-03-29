@@ -1,4 +1,4 @@
-export class Instructions {
+export class Instruction {
     text: String;
     rank: Number;
     youtubeLink: String;
