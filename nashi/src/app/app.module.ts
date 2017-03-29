@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import { NashiBot } from '../services/NashiBot.service';
 
@@ -24,6 +25,7 @@ import { NashiBot } from '../services/NashiBot.service';
   [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NashiBot,
+    TextToSpeech
   ]
 })
 export class AppModule {}
