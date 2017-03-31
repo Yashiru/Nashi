@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { SpeechRecognitionPage } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage';
+import { Home } from '../pages/Home/Home';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = SpeechRecognitionPage;
+  rootPage = Home;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
