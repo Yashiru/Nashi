@@ -1,3 +1,18 @@
 page-home {
+  ion-grid {
+    height: 100%;
+  }
 
+  .title {
+    h2 {
+      font-size: 30px;
+    }
+  }
+
+  .logo {
+    img {
+      width: 4rem;
+      float: right;
+    }
+  }
 }
