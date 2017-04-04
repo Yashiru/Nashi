@@ -1,0 +1,29 @@
+circle-nashi{
+  height: 60vh;
+
+  ion-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .centered{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg{
+        width: 100vw;
+        height: 100vh;
+        *{
+          transition-duration: 2s;
+        }
+      }
+    }
+  }
+
+  button{
+    position: fixed !important;
+    top:0;
+    left: 0;
+  }
+}
