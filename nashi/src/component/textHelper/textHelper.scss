@@ -1,0 +1,26 @@
+text-helper{
+  div p{
+    font-family: 'Open Sans', sans-serif;
+    color: #d242a6;
+    background: -webkit-linear-gradient(90deg, #FFFFFF, #ff005d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation-name: animText;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    white-space:nowrap;
+    transition: 0.3s;
+  }
+}
+
+@keyframes animText {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  50% {
+    -webkit-filter: hue-rotate(-120deg);
+  }
+  100%{
+    -webkit-filter: hue-rotate(0deg);
+  }
+}
