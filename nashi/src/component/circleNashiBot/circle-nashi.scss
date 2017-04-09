@@ -26,6 +26,7 @@ circle-nashi{
             transition: 1s linear;
             stroke-dasharray: 2% 208%;
           }
+          transition: 1s linear;
         }
 
         .start, .circle{
@@ -35,6 +36,15 @@ circle-nashi{
 
         .start{
           transform: translate(-10.02rem, 3.1rem);
+        }
+
+        circle{
+          animation-duration: 1.7s;
+          animation-iteration-count: infinite;
+          transition: 1s linear;
+          transform-origin: 50% 50%;
+          animation-timing-function: cubic-bezier(0.4,0.2,0.4,0.7);
+
         }
       }
     }
@@ -46,3 +56,40 @@ circle-nashi{
     left: 0;
   }
 }
+
+
+@keyframes animListen {
+  0% {
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+  }
+  50%{
+    stroke-dasharray: 100%, 0%;
+    stroke-dashoffset:  -68%;
+    transform: rotate(-230deg);
+  }
+  100%{
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+    transform: rotate(-360deg);
+  }
+}
+
+
+@keyframes animCircle {
+  0% {
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+  }
+  25%{
+    stroke-dasharray: 20%, 50%;
+    stroke-dashoffset:  -68%;
+    transform: rotate(-180deg);
+  }
+  100%{
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+    transform: rotate(-360deg);
+  }
+}
+

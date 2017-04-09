@@ -18,7 +18,7 @@ export class CircleNashi {
   public startStyle: any = {
     fill: "transparent"
   };
-  public stop:Boolean;
+  public stop: Boolean;
 
   @Output()
   showedCart: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -26,46 +26,27 @@ export class CircleNashi {
   @Input()
   cartComponents: String;
 
-  constructor(public navCtrl: NavController){
+  constructor(public navCtrl: NavController) {
 
   }
 
-  public animate(): void{
-    if(this.stop === false){
-      this.stop = true;
-    }
-    else if(this.stop){
-      this.stop = false;
-    }
-    else{
-      this.stop = true;
-    }
+  public animate(): void {
     setTimeout(() => {
-      this.lunchCircle();// demarrer une annimation infini a la place
-      
-    }, 860);
+      this.circleStyle = {
+        fill: "transparent",
+        opacity: "1",
+        "transition-timing-function": "linear",
+        transition: "opacity 1s steps(1, start), stroke-dashoffset 1.3s",
+        "animation-name": "animCircle",
 
+      };
 
+    }, 850);
     this.startStyle = {
       'stroke-dasharray': "2%, 208%",
       "stroke-dashoffset": "-68%"
     };
   }
-
-  public lunchCircle(){
-    let offset = 68;
-    console.log(this.stop);
-    while(this.stop)
-    {
-      setTimeout(() =>{
-        this.circleStyle = {
-          "opacity": "1",
-          "stroke-dashoffset": offset+"%"
-        };
-      }, 200)
-    }
-  }
-
 }
 
 // this.showedCart.emit(this.boolToEmit);
