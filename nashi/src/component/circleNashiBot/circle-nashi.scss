@@ -1,21 +1,40 @@
 circle-nashi{
-  height: 60vh;
 
   ion-row{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    height: 50% !important;
+    width: 100% !important;
 
     .centered{
+      height: 100% !important;
+      width: 100% !important;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: auto;
+      width: auto;
+      .circle{
+        width: 30rem;
+        height: 30rem;
 
-      svg{
-        width: 100vw;
-        height: 100vh;
-        *{
-          transition-duration: 2s;
+        svg{
+          width: 30rem;
+          height: 30rem;
+          *{
+            transition: 1s linear;
+            stroke-dasharray: 2% 208%;
+          }
+        }
+
+        .start, .circle{
+          position: fixed;
+          top: 2rem;
+        }
+
+        .start{
+          transform: translate(-10.02rem, 3.1rem);
         }
       }
     }
