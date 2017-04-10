@@ -65,3 +65,32 @@ NashiBot service:
 		
 	-Send message to wit bot
 		nashiBot.sayToBot(MY_STRING_MESSAGE);
+		
+		
+		
+
+HOW TO USE COMPONENTS
+
+
+CircleNashi component :
+	- Import component
+	
+	- include him into your html view as :
+		  <circle-nashi [entry(s)Text]="text" [fontSize]="fontSize" [animation]="YOUR_ANIMATION_NAME"></circle-nashi>
+	you can always change YOUR_ANIMATION_NAME in your controller, that will change directly css animation
+	[entryText] = simple string to show in text-helper component
+	[entrysText] = String array to show in text-helper component
+	[fontSize] = you know that thing :)
+	
+TextHelper component :
+	- Import component
+	
+	- include him in your html view as :
+		<text-helper [entryText]="entryText" [entrysText]="entrysText" [fontSize]="fontSize"></text-helper>
+	[entryText] = simple string to show in text-helper component
+	[entrysText] = String array to show in text-helper component
+	[fontSize] = you know that thing :)
+		
+
+	
+
