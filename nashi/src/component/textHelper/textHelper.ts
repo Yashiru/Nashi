@@ -60,6 +60,9 @@ export class TextHelper {
 
       }, 6500);
     }
+    else{
+      this.displayedText = this.entryText;
+    }
   }
 
 }

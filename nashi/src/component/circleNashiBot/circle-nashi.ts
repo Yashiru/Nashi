@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { TextHelper } from '../textHelper/textHelper';
 
 @Component({
   selector: 'circle-nashi',
@@ -7,6 +8,17 @@ import { NavController } from 'ionic-angular';
 
 })
 export class CircleNashi {
+  @Input()
+  entryText: String;
+
+  @Input()
+  entrysText: String[];
+
+  @Input()
+  fontSize: String;
+
+  @Input()
+  animation: String;
   public boolToEmit: boolean = true;
   public circleStyle: any = {
     fill: "transparent",
@@ -20,16 +32,22 @@ export class CircleNashi {
   };
   public stop: Boolean;
 
-  @Output()
-  showedCart: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  @Input()
-  cartComponents: String;
-
   constructor(public navCtrl: NavController) {
 
   }
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.animate();
+    }, 500);
+  }
+
+  ngOnChanges()
+  {
+      setTimeout(() => {
+        this.animate();
+      }, 500);
+  }
   public animate(): void {
     setTimeout(() => {
       this.circleStyle = {
@@ -37,7 +55,7 @@ export class CircleNashi {
         opacity: "1",
         "transition-timing-function": "linear",
         transition: "opacity 1s steps(1, start), stroke-dashoffset 1.3s",
-        "animation-name": "animCircle",
+        "animation-name": this.animation,
 
       };
 
