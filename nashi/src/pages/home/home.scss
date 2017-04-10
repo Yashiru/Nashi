@@ -1,6 +1,22 @@
 page-home {
   ion-grid {
     height: 100%;
+
+    #header {
+      height: 15%;
+    }
+
+    #circle {
+      height: 60%;
+    }
+
+    #content {
+      height: 10%;
+    }
+
+    #footer {
+      height: 15%;
+    }
   }
 
   /*.title {

@@ -2,14 +2,23 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import {Home} from "../pages/home/home";
+<<<<<<< HEAD
+import { TabsPage } from '../pages/tabs/tabs';
+import {HomePage} from "../pages/home/home";
+=======
+import { Home } from '../pages/home/home';
+>>>>>>> feature/screenDev/homeRoundComponent
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+<<<<<<< HEAD
+  rootPage = HomePage;
+=======
   rootPage = Home;
+>>>>>>> feature/screenDev/homeRoundComponent
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
