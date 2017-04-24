@@ -10,11 +10,15 @@ import { Home  } from '../pages/Home/Home'
 import { Yummly } from '../services/Yummly.service';
 import { NashiBot } from '../services/NashiBot.service';
 
+import { WitAiService } from '../services/Wit-ai.service';
+import { Ingrediant } from '../models/Ingrediant';
+import { WitIngrediant } from '../models/factory/WitIngrediant';
+
 @NgModule({
   declarations: [
     MyApp,
     SpeechRecognitionPage,
-    Home
+    Home,
 
   ],
   imports: [
@@ -33,6 +37,10 @@ import { NashiBot } from '../services/NashiBot.service';
     NashiBot,
     TextToSpeech,
     Yummly,
-  ]
+    WitAiService,
+    Ingrediant,
+    WitIngrediant
+
+  ],
 })
 export class AppModule {}
