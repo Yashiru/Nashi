@@ -2,6 +2,9 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Home } from '../pages/home/home';
+import { Recipes } from '../pages/recipes/recipes';
+import { Recipe } from '../pages/recipe/recipe';
+import { About } from '../pages/about/about';
 import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../component/textHelper/textHelper';
 
@@ -11,6 +14,8 @@ import { TextHelper } from '../component/textHelper/textHelper';
 
     // Pages
     Home,
+    About,
+    Recipes,
 
     // components
     CircleNashi,
@@ -22,7 +27,9 @@ import { TextHelper } from '../component/textHelper/textHelper';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Home
+    Home,
+    About,
+    Recipes
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
