@@ -11,7 +11,7 @@ import { Yummly } from '../services/Yummly.service';
 import { NashiBot } from '../services/NashiBot.service';
 
 import { WitAiService } from '../services/Wit-ai.service';
-import { Ingrediant } from '../models/Ingrediant';
+import { Ingredient } from '../models/Ingredient';
 import { WitIngrediant } from '../models/factory/WitIngrediant';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
     TextToSpeech,
     Yummly,
     WitAiService,
-    Ingrediant,
+    Ingredient,
     WitIngrediant
 
   ],

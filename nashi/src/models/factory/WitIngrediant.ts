@@ -1,4 +1,4 @@
-import { Ingrediant } from '../Ingrediant';
+  import { Ingredient } from '../Ingredient';
 
 export class WitIngrediant{
 
@@ -9,7 +9,7 @@ export class WitIngrediant{
 
     for(var i in jsonIngrediant){
       obj = jsonIngrediant[i];
-      var ingrediant = new Ingrediant();
+      var ingrediant = new Ingredient();
       ingrediant.name = obj.value;
       ingrediant.accuracyPercentage = obj.confidence;
 
