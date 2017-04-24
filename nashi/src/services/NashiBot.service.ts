@@ -4,6 +4,7 @@ import { Platform } from 'ionic-angular';
 
 declare var SpeechRecognition: any;
 
+
 @Injectable()
 export class NashiBot {
   recognition: any;
@@ -18,10 +19,8 @@ export class NashiBot {
       this.recognition.onerror = (event => {
         console.log('Error happens.');
       });
-
     });
   }
-
   public speek(message: string): void{
     this.tts.speak(message)
       .then(() => console.log('Success')/*callback()*/)
