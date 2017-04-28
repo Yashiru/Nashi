@@ -20,24 +20,24 @@ export class Home {
   // var for component speechRecognition
   _zone: any;
   recognition: any;
-  listaSpesa: any = [];
+  list: any = [];
 
   constructor(public navCtrl: NavController, _zone: NgZone) {
     this._zone = _zone;
     this.navCtrl = navCtrl;
 
-    // this.recognition = new SpeechRecognition();
-    // this.recognition.lang = 'fr-FR';
-    // this.recognition.onresult = (event => {
-    //   if (event.results.length > 0) {          
-    //     console.log('--> risultati: ', event.results[0][0].transcript);
-    //     this._zone.run(() => this.listaSpesa.push({alimento: event.results[0][0].transcript}));
-    //   }
-    // });
+    this.recognition = new SpeechRecognition();
+    this.recognition.lang = 'en-US';
+    this.recognition.onresult = (event => {
+      if (event.results.length > 0) {          
+        this._zone.run(() => this.list.push({result: event.results[0][0].transcript}));
+      }
+    });
+    console.log('--> result: ', this.list);
   }
 
   ionViewDidLoad() {
-    // this.recognition.start();
+    this.recognition.start();
   }
 
   goToRecipes() {

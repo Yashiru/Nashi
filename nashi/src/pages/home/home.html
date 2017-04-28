@@ -13,12 +13,12 @@
     </ion-row>
     <ion-row id="content">
       <p id="home-content-speech">
-
+          {{ list | debug }}
       </p>
     </ion-row>
     <ion-row id="">
       <ion-col width-20 offset-80 (click)='goToRecipes();'>
-        <img src="./../../assets/images/logo-about.svg">
+        <img src="assets/images/logo-about.svg">
       </ion-col>
     </ion-row>
   </ion-grid>

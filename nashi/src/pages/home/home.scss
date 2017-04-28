@@ -1,5 +1,9 @@
 page-home {
   ion-grid {
+    
+    circle-nashi {
+      align-self: center;
+    }
     height: 100%;
 
     #header {
@@ -7,6 +11,7 @@ page-home {
     }
 
     #circle {
+      justify-content: center;
       height: 60%;
     }
 
@@ -16,12 +21,6 @@ page-home {
 
     #footer {
       height: 15%;
-    }
-  }
-
-  .circle {
-    svg {
-      top: 6rem;
     }
   }
 }
