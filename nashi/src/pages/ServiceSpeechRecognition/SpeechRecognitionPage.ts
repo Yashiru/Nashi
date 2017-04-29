@@ -17,10 +17,10 @@ export class SpeechRecognitionPage {
 
     public sayHello(){
       this.bot.sayToBot((result: Ingredient[]): void =>{
-        this.yummly.getRecipeFromIngrediant(result, (res) => {
-          this.speekresult = res.toString();
+        this.yummly.getRecipeFromIngrediant(result, (res: any) => {
+          this.speekresult = res;
         });
-      })
+      });
     }
 
 }

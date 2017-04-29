@@ -24,11 +24,11 @@ export class NashiBot {
     });
   }
 
-  /*public speek(message: string): void{
-    this.tts.speak(message)
-      .then(() => console.log('Success')/*callback())
-      .catch((reason: any) => console.log(reason));
-  }*/
+  public speek(message: string): void{
+    /*this.tts.speak(message)
+      .then(() => console.log('Success').callback())
+      .catch((reason: any) => console.log(reason));*/
+  }
 
   public sayToBot(callback: (ingredients: Ingredient[]) => void): String{
     this.recognition.onresult = (event => {
@@ -40,6 +40,10 @@ export class NashiBot {
     this.recognition.start();
 
     return "";
+  }
+
+  public sayToBotWithString(message: String, callback: (ingredients: Ingredient[]) => void){
+    this.wit.sayToBot(message, callback);
   }
 
 }

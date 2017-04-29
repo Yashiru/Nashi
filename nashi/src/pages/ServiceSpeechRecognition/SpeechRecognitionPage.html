@@ -7,6 +7,8 @@
 <ion-content padding>
   <ion-list inset>
     <button (click)="sayHello()" >say hello</button>
-    {{speekresult}}
+    <ul>
+      <li *ngFor="let recipe of speekresult">{{recipe.recipeName}}</li>
+    </ul>
   </ion-list>
 </ion-content>

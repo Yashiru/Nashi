@@ -7,18 +7,16 @@ export class WitIngrediant{
 
     var obj : any;
 
-    for(var i in jsonIngrediant){
-      obj = jsonIngrediant[i];
-      var ingrediant = new Ingredient();
-      ingrediant.name = obj.value;
-      ingrediant.accuracyPercentage = obj.confidence;
+    jsonIngrediant = jsonIngrediant.ingredient;
 
-      if(obj.suggested != null && obj.suggested != undefined){
-        ingrediant.suggested = obj.suggested;
-      }
+    for(var i in jsonIngrediant){
+      var ingrediant = new Ingredient();
+      ingrediant.name = jsonIngrediant[i].value;
+      ingrediant.accuracyPercentage = jsonIngrediant[i].confidence;
 
       ingrediants.push(ingrediant);
     }
+    console.log(ingrediants);
 
     return ingrediants;
   }

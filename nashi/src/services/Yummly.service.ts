@@ -17,13 +17,27 @@ export class Yummly {
     let url = "http://api.yummly.com/v1/api/recipes?";
 
     for (let ing of ingrediants){
-      url += "allowedIngredient[]="+ing.name+"&";
+      let name: String;
+      if(ing.name[ing.name.length] == "s")
+      {
+        name = ing.name.substr(0, (ing.name.length-1));
+      }
+      else{
+        name = ing.name;
+      }
+      url += "allowedIngredient[]="+name+"&";
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+name);
     }
 
     let headers = new Headers({ 'X-Yummly-App-ID': this.apiId, 'X-Yummly-App-Key': this.apiKey});
     this.http.get(url, {headers: headers})
       .subscribe(
-        function(response) { callback(response) }, //mapper le json dans un objet
+        function(response: any) {
+          let globalJson: any = JSON.parse(response._body);
+          let jsonRecipes: any = globalJson.matches;
+          console.log(jsonRecipes);
+          callback(jsonRecipes);
+        }, //mapper le json dans un objet
         function(error) { console.log("Error happened" + error)},
         function() { console.log("the subscription is completed")}
       );

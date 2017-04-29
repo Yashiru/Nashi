@@ -10,19 +10,18 @@ import {Ingredient} from "../models/Ingredient";
 
 @Injectable()
 export class WitAiService {
-  private accessToken: string = "KG36AZODU3ZIN4XAHAM5IS2ITPVWF6U5";
 
   public constructor(private http : Http, private witIngrediant: WitIngrediant){
 
   }
 
   public sayToBot(message : String, callback: (ingredients: Ingredient[]) => void): void{
-    let url: string = "https://api.wit.ai/message?q=" + message + "&access_token=" + this.accessToken;
-    let headers = new Headers({ 'Access-Control-Allow-Origin': ""});
+    let url: string = "http://leo-fasano.com/nashi/web/wit?message=" + message;
+    let headers = new Headers({ 'Access-Control-Allow-Origin': "localhost:8100"});
 
     let options = new RequestOptions({ headers: headers });
 
-    this.http.get(url, options).map(res => res.json()).subscribe(data => {
+    this.http.get(url).map(res => res.json()).subscribe(data => {
       callback(this.ingrediantFactorise(data));
     });
 
