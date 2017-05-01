@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
 import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { LoginPage } from '../pages/loginPage/login-page';
 
 import { NashiBot } from '../services/NashiBot.service';
 
@@ -10,6 +11,7 @@ import { NashiBot } from '../services/NashiBot.service';
   declarations: [
     MyApp,
     SpeechRecognitionPage,
+    LoginPage,
 
   ],
   imports: [
@@ -19,6 +21,7 @@ import { NashiBot } from '../services/NashiBot.service';
   entryComponents: [
     MyApp,
     SpeechRecognitionPage,
+    LoginPage,
 
   ],
   providers:
