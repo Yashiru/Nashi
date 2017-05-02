@@ -4,8 +4,20 @@ import { MyApp } from './app.component';
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { LoginPage } from '../pages/loginPage/login-page';
-
+import { AuthConfig, AuthHttp } from 'angular2-jwt';
+import { AuthService } from '../services/auth/auth.service';
+import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage';
 import { NashiBot } from '../services/NashiBot.service';
+
+let storage: Storage = new Storage();
+
+export function getAuthHttp(http) {
+  return new AuthHttp(new AuthConfig({
+    globalHeaders: [{'Accept': 'application/json'}],
+    tokenGetter: (() => storage.get('id_token'))
+  }), http);
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +40,13 @@ import { NashiBot } from '../services/NashiBot.service';
   [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NashiBot,
-    TextToSpeech
+    TextToSpeech,
+    AuthService,
+    {
+      provide: AuthHttp,
+      useFactory: getAuthHttp,
+      deps: [Http]
+    }
   ]
 })
 export class AppModule {}

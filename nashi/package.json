@@ -22,6 +22,7 @@
     "@ionic-native/core": "^3.4.2",
     "@ionic-native/text-to-speech": "^3.4.2",
     "@ionic/storage": "1.1.7",
+    "angular2-jwt": "^0.1.27",
     "ionic-angular": "2.0.1",
     "ionic-native": "2.4.1",
     "ionicons": "3.0.0",
