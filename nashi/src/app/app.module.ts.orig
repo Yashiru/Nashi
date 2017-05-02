@@ -1,0 +1,47 @@
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+<<<<<<< HEAD
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+=======
+import { Home } from '../pages/home/home';
+import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
+import { TextHelper } from '../component/textHelper/textHelper';
+>>>>>>> feature/screenDev/homeRoundComponent
+
+@NgModule({
+  declarations: [
+    MyApp,
+<<<<<<< HEAD
+    AboutPage,
+    ContactPage,
+    HomePage
+=======
+
+    // Pages
+    Home,
+
+    // components
+    CircleNashi,
+    TextHelper
+>>>>>>> feature/screenDev/homeRoundComponent
+  ],
+  imports: [
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+<<<<<<< HEAD
+    AboutPage,
+    ContactPage,
+    HomePage
+=======
+    Home
+>>>>>>> feature/screenDev/homeRoundComponent
+  ],
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+})
+export class AppModule {}

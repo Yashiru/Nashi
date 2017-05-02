@@ -1,15 +1,15 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-//pages
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
-import { TextToSpeech } from '@ionic-native/text-to-speech';
-
-import { Home  } from '../pages/Home/Home'
-//services
 import { Yummly } from '../services/Yummly.service';
+import { Home  } from '../pages/home/home'
+import { Recipes  } from '../pages/recipes/recipes'
+import { About  } from '../pages/about/about'
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
+import { TextHelper } from '../component/textHelper/textHelper';
 import { NashiBot } from '../services/NashiBot.service';
-
 import { WitAiService } from '../services/Wit-ai.service';
 import { Ingredient } from '../models/Ingredient';
 import { WitIngrediant } from '../models/factory/WitIngrediant';
@@ -18,8 +18,15 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
   declarations: [
     MyApp,
     SpeechRecognitionPage,
+    // Pages
     Home,
+    Recipes,
+    About,
 
+    // Components
+    CircleNashi,
+    TextHelper
+    
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -28,8 +35,15 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
   entryComponents: [
     MyApp,
     SpeechRecognitionPage,
-    Home
 
+    // Pages
+    Home,
+    Recipes,
+    About,
+
+    // Components
+    CircleNashi,
+    TextHelper
   ],
   providers:
   [
