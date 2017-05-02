@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class NashiBot {
 
-  constructor(private tts: TextToSpeech){
+  constructor(private tts: TextToSpeech, public http: Http){
 
   }
 
