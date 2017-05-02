@@ -1,31 +1,50 @@
 import { TextToSpeech } from '@ionic-native/text-to-speech';
-import { Http, Headers, Response } from '@angular/http';
 import {Injectable} from "@angular/core";
-import 'rxjs/add/operator/map'
+import { Platform } from 'ionic-angular';
+import { WitAiService } from '../services/Wit-ai.service';
+import {Ingredient} from "../models/Ingredient";
+
+declare var SpeechRecognition: any;
+
 
 @Injectable()
 export class NashiBot {
+  recognition: any;
 
-  constructor(private tts: TextToSpeech, public http: Http){
-
+  constructor(/*private tts: TextToSpeech, */platform: Platform, public wit: WitAiService){
+    platform.ready().then(() => {
+      this.recognition = new SpeechRecognition();
+      this.recognition.lang = 'en-US';
+      this.recognition.onnomatch = (event => {
+        console.log('No match found.');
+      });
+      this.recognition.onerror = (event => {
+        console.log('Error happens.');
+      });
+    });
   }
 
   public speek(message: string): void{
-    this.tts.speak(message)
-      .then(() => console.log('Success')/*callback()*/)
-      .catch((reason: any) => console.log(reason));
+    /*this.tts.speak(message)
+      .then(() => console.log('Success').callback())
+      .catch((reason: any) => console.log(reason));*/
   }
 
-  public sayToBot(message: String, callback: (res:Response) => void): void{
-    let url = "http://leo-fasano.com/nashi/web/wit&message="+message;
+  public sayToBot(callbackToGetMessage: (msg: String) => void, callback: (ingredients: Ingredient[]) => void): String{
+    this.recognition.onresult = (event => {
+      if (event.results.length > 0) {
+        this.wit.sayToBot(event.results[0][0].transcript, callback);
+        callbackToGetMessage(event.results[0][0].transcript);
+      }
+    });
 
+    this.recognition.start();
 
-    let headers = new Headers({ });
-    this.http.get(url, {headers: headers})
-      .subscribe(
-        function(response) { callback(response) }, //mapper le json dans un objet
-        function(error) { console.log("Error happened" + error)},
-        function() { console.log("the subscription is completed")}
-      );
+    return "";
   }
+
+  public sayToBotWithString(message: String, callback: (ingredients: Ingredient[]) => void){
+    this.wit.sayToBot(message, callback);
+  }
+
 }

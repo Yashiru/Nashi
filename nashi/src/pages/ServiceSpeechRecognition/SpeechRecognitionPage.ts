@@ -16,11 +16,16 @@ export class SpeechRecognitionPage {
     }
 
     public sayHello(){
-      this.bot.sayToBot((result: Ingredient[]): void =>{
-        this.yummly.getRecipeFromIngrediant(result, (res: any) => {
-          this.speekresult = res;
-        });
-      });
+      this.bot.sayToBot(
+        (msg: String) => {
+          
+        },
+        (result: Ingredient[]): void =>{
+          this.yummly.getRecipeFromIngrediant(result, (res: any) => {
+            this.speekresult = res;
+          });
+        }
+      );
     }
 
 }

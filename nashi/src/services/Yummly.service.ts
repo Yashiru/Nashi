@@ -26,7 +26,6 @@ export class Yummly {
         name = ing.name;
       }
       url += "allowedIngredient[]="+name+"&";
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+name);
     }
 
     let headers = new Headers({ 'X-Yummly-App-ID': this.apiId, 'X-Yummly-App-Key': this.apiKey});
