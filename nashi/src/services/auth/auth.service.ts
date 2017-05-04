@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import Auth0Lock from "auth0-lock";
 import auth0 from 'auth0-js'
 import { browserHistory } from 'react-router'
+import {UserService} from './user.service';
 
 let Auth0Vars = {
   "AUTH0_CLIENT_ID": "kzdCGWtEBaYYqIQY1ms5XWTW1bbe2QPY",
@@ -33,7 +34,7 @@ export class AuthService {
   accessToken: string;
   idToken: string;
 
-  constructor(private authHttp: AuthHttp, zone: NgZone) {
+  constructor(private authHttp: AuthHttp, zone: NgZone, private userService: UserService) {
     this.zoneImpl = zone;
     // Check if there is a profile saved in local storage
     this.storage.get('profile').then(profile => {
@@ -65,11 +66,14 @@ export class AuthService {
           profile.user_metadata = profile.user_metadata || {};
           this.storage.set('profile', JSON.stringify(profile));
           this.user = profile;
+          this.userService.postUserConnected(this.user, this.idToken);
         });
 
         this.lock.hide();
 
-        this.zoneImpl.run(() => this.user = authResult.profile);
+        this.zoneImpl.run(() => {
+          this.user = authResult.profile;
+        });
         // // Schedule a token refresh
         this.scheduleRefresh();
       }

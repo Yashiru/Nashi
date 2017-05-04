@@ -5,6 +5,7 @@ import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { LoginPage } from '../pages/loginPage/login-page';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { AuthService } from '../services/auth/auth.service';
+import { UserService } from '../services/auth/user.service';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { NashiBot } from '../services/NashiBot.service';
@@ -39,6 +40,7 @@ export function getAuthHttp(http) {
     NashiBot,
     TextToSpeech,
     AuthService,
+    UserService,
     {
       provide: AuthHttp,
       useFactory: getAuthHttp,
