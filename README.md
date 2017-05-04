@@ -1,6 +1,4 @@
-# Nashi
-
-HOW TO USE SERVICES
+# HOW TO USE SERVICES
 
 
 SpeechRecognition service: 
@@ -67,9 +65,15 @@ NashiBot service:
 		nashiBot.sayToBot(MY_STRING_MESSAGE);
 		
 		
-		
+Auth service :
 
-HOW TO USE COMPONENTS
+	-Import service as always import ... from ... and declare new private or public variable named "auth" in constructor to use the service
+	-function auth.authenticated() return a boolean to specifie if user is logged
+	-The auth.login() function opens the authentication modal to connect the user
+	-the auth.logout() function logout the user :)
+
+
+# HOW TO USE COMPONENTS
 
 
 CircleNashi component :
