@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { CircleNashi } from '../../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../../component/textHelper/textHelper';
 import { Recipes } from '../recipes/recipes';
+import { About } from '../about/about';
 import { NashiBot } from '../../services/NashiBot.service';
 import { Ingredient } from "../../models/Ingredient";
 import { Yummly } from "../../services/Yummly.service";
@@ -29,7 +30,6 @@ export class Home {
 
   // var for component speechRecognition
   _zone: any;
-  speekresult: string;
   message: string;
 
   constructor(public navCtrl: NavController, _zone: NgZone, private bot: NashiBot, public yummly: Yummly, public platform: Platform) {
@@ -44,15 +44,22 @@ export class Home {
           this._zone.run(() => this.message = msg, this.animation = "animLoad" );
         },
         (result: Ingredient[]): void => {
+          // res : recipes
           this.yummly.getRecipeFromIngrediant(result, (res: any) => {
-            this.speekresult = res;
+            this.goToViewWithData(Recipes, res);
           });
         }
       );
     });
   }
 
-  goToRecipes() {
-    this.navCtrl.push(Recipes);
+  goToViewWithData(View, datas) {
+    this.navCtrl.push(View, {
+      datas: datas
+    });
+  }
+
+  goToView(View) {
+    this.navCtrl.push(View);
   }
 }
