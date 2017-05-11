@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { CircleNashi } from '../../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../../component/textHelper/textHelper';
 import { Recipes } from '../recipes/recipes';
+import { Recipe } from '../recipes/recipe';
 import { About } from '../about/about';
 import { NashiBot } from '../../services/NashiBot.service';
 import { Ingredient } from "../../models/Ingredient";
@@ -38,16 +39,23 @@ export class Home {
   }
 
   ionViewDidLoad() {
+    let goToViewWithData = (View, datas) => {
+      this.goToViewWithData(View, datas);
+    };
     this.platform.ready().then(() => {
       this.bot.sayToBot(
         (msg: string): void => {
           this._zone.run(() => this.message = msg, this.animation = "animLoad" );
         },
-        (result: Ingredient[]): void => {
-          // res : recipes
-          this.yummly.getRecipeFromIngrediant(result, (res: any) => {
-            this.goToViewWithData(Recipes, res);
-          });
+        (isRecipe: Boolean, result: any): void => {
+            if (isRecipe) {
+                goToViewWithData(Recipe, result);
+            } else {
+                // res : recipes
+                this.yummly.getRecipeFromIngrediant(result, (res: any) => {
+                    goToViewWithData(Recipes, res);
+                });
+            }
         }
       );
     });
@@ -55,7 +63,7 @@ export class Home {
 
   goToViewWithData(View, datas) {
     this.navCtrl.push(View, {
-      datas: datas
+      datas: datas,
     });
   }
 

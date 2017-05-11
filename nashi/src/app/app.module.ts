@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
 import { Yummly } from '../services/Yummly.service';
 import { Home  } from '../pages/home/home'
 import { Recipes  } from '../pages/recipes/recipes'
@@ -17,7 +16,6 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
 @NgModule({
   declarations: [
     MyApp,
-    SpeechRecognitionPage,
     // Pages
     Home,
     Recipes,
@@ -34,7 +32,6 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SpeechRecognitionPage,
 
     // Pages
     Home,
