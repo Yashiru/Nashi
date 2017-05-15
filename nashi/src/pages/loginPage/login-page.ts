@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Ingredient } from '../../models/Ingredient';
 import { Response } from '@angular/http';
 import { AuthService } from '../../services/auth/auth.service';
+import { HomePage } from '../home/home-page';
 
 @Component({
     selector: 'login-page',
@@ -15,7 +16,7 @@ export class LoginPage {
     }
 
     public continueAsGuest(){
-      //this.navCtrl.push(); your home page
+      this.navCtrl.push(HomePage);
     }
 
 
