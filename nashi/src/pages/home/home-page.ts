@@ -2,11 +2,12 @@ import { Component, NgZone } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CircleNashi } from '../../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../../component/textHelper/textHelper';
-import { Recipes } from '../recipes/recipes';
-import { Recipe } from '../recipes/recipe';
-import { About } from '../about/about';
+import { RecipesPage } from '../recipes/recipes-page';
+import { RecipePage } from '../recipes/recipe-page';
+import { AboutPage } from '../about/about-page';
 import { NashiBot } from '../../services/NashiBot.service';
 import { Ingredient } from "../../models/Ingredient";
+import { YummlyResponse } from "../../models/YummlyResponse";
 import { Yummly } from "../../services/Yummly.service";
 import { Platform } from 'ionic-angular';
 
@@ -15,9 +16,9 @@ declare var SpeechRecognition: any;
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home-page.html'
 })
-export class Home {
+export class HomePage {
   
   // var for component circle
   private fontSize = "16pt";
@@ -39,9 +40,6 @@ export class Home {
   }
 
   ionViewDidLoad() {
-    let goToViewWithData = (View, datas) => {
-      this.goToViewWithData(View, datas);
-    };
     this.platform.ready().then(() => {
       this.bot.sayToBot(
         (msg: string): void => {
@@ -49,11 +47,15 @@ export class Home {
         },
         (isRecipe: Boolean, result: any): void => {
             if (isRecipe) {
-                goToViewWithData(Recipe, result);
+                let response = new YummlyResponse();
+                response.setDatas(result);
+                // this.goToView(RecipePage);
             } else {
                 // res : recipes
                 this.yummly.getRecipeFromIngrediant(result, (res: any) => {
-                    goToViewWithData(Recipes, res);
+                    let response = new YummlyResponse();
+                    response.setDatas(res);
+                    // this.goToView(RecipesPage);
                 });
             }
         }
@@ -61,13 +63,7 @@ export class Home {
     });
   }
 
-  goToViewWithData(View, datas) {
-    this.navCtrl.push(View, {
-      datas: datas,
-    });
-  }
-
-  goToView(View) {
-    this.navCtrl.push(View);
+  goToView(view) {
+    this.navCtrl.push(view);
   }
 }
