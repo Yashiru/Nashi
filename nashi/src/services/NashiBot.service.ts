@@ -1,4 +1,4 @@
-import { TextToSpeech } from '@ionic-native/text-to-speech';
+//import { TextToSpeech } from '@ionic-native/text-to-speech';
 import {Injectable} from "@angular/core";
 import { Platform } from 'ionic-angular';
 import { WitAiService } from '../services/Wit-ai.service';

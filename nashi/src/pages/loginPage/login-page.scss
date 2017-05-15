@@ -1,0 +1,32 @@
+login-page{
+
+  ion-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 10rem;
+
+    h2{
+      font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+      font-weight: normal;
+    }
+  }
+
+  .scroll-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    .main-logo{
+      margin-top: 5rem;
+      width: 50vw;
+      height: 50vw;
+    }
+
+    .login-buttons{
+      width: 70vw;
+    }
+  }
+}

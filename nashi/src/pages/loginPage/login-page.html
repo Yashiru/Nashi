@@ -1,0 +1,23 @@
+<ion-content padding *ngIf="!auth.authenticated()">
+
+  <ion-header>
+
+      <h2>Nashi</h2>
+
+  </ion-header>
+
+  <ion-img [ngClass]="'main-logo'" src="assets/images/nashiLogo.jpg"></ion-img>
+
+
+  <div class="login-buttons">
+    <button ion-button block color="loginGoogle" (click)="auth.login()" icon-left>
+      <ion-icon name="logo-google"></ion-icon>
+      Login with Google
+    </button>
+
+    <button ion-button block clear color="primary" (click)="continueAsGuest()">
+      Continue as a guest
+    </button>
+  </div>
+
+</ion-content>
