@@ -33,6 +33,7 @@ export class AuthService {
   zoneImpl: NgZone;
   accessToken: string;
   idToken: string;
+  callback: (data: any) => (void);
 
   constructor(private authHttp: AuthHttp, zone: NgZone, private userService: UserService) {
     this.zoneImpl = zone;
@@ -67,6 +68,7 @@ export class AuthService {
           this.storage.set('profile', JSON.stringify(profile));
           this.user = profile;
           this.userService.postUserConnected(this.user, this.idToken);
+          this.callback(this.user);
         });
 
         this.lock.hide();
@@ -85,8 +87,9 @@ export class AuthService {
     return tokenNotExpired('id_token', this.idToken);
   }
 
-  public login() {
+  public login(callback: (data:any) => (void)) {
     // Show the Auth0 Lock widget
+    this.callback = callback;
     this.lock.show();
   }
 

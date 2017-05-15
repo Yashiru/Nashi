@@ -14,5 +14,9 @@ export class LoginPage {
 
     }
 
+    public continueAsGuest(){
+      //this.navCtrl.push(); your home page
+    }
+
 
 }

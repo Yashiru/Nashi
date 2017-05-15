@@ -1,23 +1,23 @@
 <ion-content padding *ngIf="!auth.authenticated()">
 
-  <button ion-button block (click)="auth.login()">Login</button>
+  <ion-header>
 
-</ion-content>
+      <h2>Nashi</h2>
 
-<ion-content padding *ngIf="auth.authenticated()">
+  </ion-header>
 
-  <ion-card>
+  <ion-img [ngClass]="'main-logo'" src="assets/images/nashiLogo.jpg"></ion-img>
 
-    <ion-item *ngIf="auth.user">
-      <ion-avatar item-left>
-        <img src="{{ auth.user.picture }}">
-      </ion-avatar>
-      <h2>{{ auth.user.nickname }}</h2>
-      <p>{{ auth.user.email }}</p>
-    </ion-item>
 
-  </ion-card>
+  <div class="login-buttons">
+    <button ion-button block color="loginGoogle" (click)="auth.login()" icon-left>
+      <ion-icon name="logo-google"></ion-icon>
+      Login with Google
+    </button>
 
-  <button ion-button block (click)="auth.logout()">Logout</button>
+    <button ion-button block clear color="primary" (click)="continueAsGuest()">
+      Continue as a guest
+    </button>
+  </div>
 
 </ion-content>

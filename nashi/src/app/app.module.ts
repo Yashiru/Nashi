@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { TextToSpeech } from '@ionic-native/text-to-speech';
+//import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { LoginPage } from '../pages/loginPage/login-page';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 import { AuthService } from '../services/auth/auth.service';
@@ -38,7 +38,7 @@ export function getAuthHttp(http) {
   [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NashiBot,
-    TextToSpeech,
+    //TextToSpeech,
     AuthService,
     UserService,
     {
