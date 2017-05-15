@@ -2,9 +2,10 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Yummly } from '../services/Yummly.service';
-import { Home  } from '../pages/home/home'
-import { Recipes  } from '../pages/recipes/recipes'
-import { About  } from '../pages/about/about'
+import { HomePage  } from '../pages/home/home-page'
+import { RecipesPage  } from '../pages/recipes/recipes-page'
+import { RecipePage  } from '../pages/recipe/recipe-page'
+import { AboutPage  } from '../pages/about/about-page'
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../component/textHelper/textHelper';
@@ -17,9 +18,10 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
   declarations: [
     MyApp,
     // Pages
-    Home,
-    Recipes,
-    About,
+    HomePage,
+    RecipesPage,
+    RecipePage,
+    AboutPage,
 
     // Components
     CircleNashi,
@@ -34,9 +36,10 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
     MyApp,
 
     // Pages
-    Home,
-    Recipes,
-    About,
+    HomePage,
+    RecipesPage,
+    RecipePage,
+    AboutPage,
 
     // Components
     CircleNashi,
