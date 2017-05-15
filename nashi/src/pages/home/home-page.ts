@@ -3,11 +3,11 @@ import { NavController } from 'ionic-angular';
 import { CircleNashi } from '../../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../../component/textHelper/textHelper';
 import { RecipesPage } from '../recipes/recipes-page';
-import { RecipePage } from '../recipes/recipe-page';
+import { RecipeStepPage } from '../recipe-step/recipe-step-page';
 import { AboutPage } from '../about/about-page';
 import { NashiBot } from '../../services/NashiBot.service';
 import { Ingredient } from "../../models/Ingredient";
-import { YummlyResponse } from "../../models/YummlyResponse";
+import { WorkflowService } from "../../services/Workflow.service";
 import { Yummly } from "../../services/Yummly.service";
 import { Platform } from 'ionic-angular';
 
@@ -47,15 +47,15 @@ export class HomePage {
         },
         (isRecipe: Boolean, result: any): void => {
             if (isRecipe) {
-                let response = new YummlyResponse();
+                let response = new WorkflowService();
                 response.setDatas(result);
-                // this.goToView(RecipePage);
+                this.navCtrl.push(RecipeStepPage);
             } else {
                 // res : recipes
                 this.yummly.getRecipeFromIngrediant(result, (res: any) => {
-                    let response = new YummlyResponse();
+                    let response = new WorkflowService();
                     response.setDatas(res);
-                    // this.goToView(RecipesPage);
+                    this.navCtrl.push(RecipesPage);
                 });
             }
         }
@@ -63,7 +63,7 @@ export class HomePage {
     });
   }
 
-  goToView(view) {
-    this.navCtrl.push(view);
+  goToAbout() {
+    this.navCtrl.push(AboutPage);
   }
 }

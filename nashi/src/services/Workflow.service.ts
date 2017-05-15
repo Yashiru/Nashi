@@ -1,4 +1,7 @@
-export class YummlyResponse {
+import {Injectable} from "@angular/core";
+
+@Injectable()
+export class WorkflowService {
     private datas: any;
 
     constructor() {

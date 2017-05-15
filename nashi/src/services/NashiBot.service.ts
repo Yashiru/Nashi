@@ -14,7 +14,7 @@ export class NashiBot {
   constructor(/*private tts: TextToSpeech, */platform: Platform, public wit: WitAiService){
     platform.ready().then(() => {
       this.recognition = new SpeechRecognition();
-      this.recognition.lang = 'en-US';
+      this.recognition.lang = 'fr-FR';
       this.recognition.onnomatch = (event => {
         console.log('No match found.');
       });

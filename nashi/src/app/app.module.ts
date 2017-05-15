@@ -4,13 +4,14 @@ import { MyApp } from './app.component';
 import { Yummly } from '../services/Yummly.service';
 import { HomePage  } from '../pages/home/home-page'
 import { RecipesPage  } from '../pages/recipes/recipes-page'
-import { RecipePage  } from '../pages/recipe/recipe-page'
+import { RecipeStepPage  } from '../pages/recipe-step/recipe-step-page'
 import { AboutPage  } from '../pages/about/about-page'
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../component/textHelper/textHelper';
 import { NashiBot } from '../services/NashiBot.service';
 import { WitAiService } from '../services/Wit-ai.service';
+import { WorkflowService } from "../services/Workflow.service";
 import { Ingredient } from '../models/Ingredient';
 import { WitIngrediant } from '../models/factory/WitIngrediant';
 
@@ -20,7 +21,7 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
     // Pages
     HomePage,
     RecipesPage,
-    RecipePage,
+    RecipeStepPage,
     AboutPage,
 
     // Components
@@ -38,7 +39,7 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
     // Pages
     HomePage,
     RecipesPage,
-    RecipePage,
+    RecipeStepPage,
     AboutPage,
 
     // Components
@@ -52,6 +53,7 @@ import { WitIngrediant } from '../models/factory/WitIngrediant';
     TextToSpeech,
     Yummly,
     WitAiService,
+    WorkflowService,
     Ingredient,
     WitIngrediant
 

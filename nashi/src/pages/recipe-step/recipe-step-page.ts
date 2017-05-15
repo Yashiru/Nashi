@@ -3,10 +3,10 @@ import { NavController } from 'ionic-angular';
 import { WorkflowService } from "../../services/Workflow.service";
 
 @Component({
-  selector: 'page-recipes',
-  templateUrl: 'recipes-page.html'
+  selector: 'page-recipe-step',
+  templateUrl: 'recipe-step-page.html'
 })
-export class RecipesPage {
+export class RecipeStepPage {
     constructor(public navCtrl: NavController) {
         let response = new WorkflowService();
         response.getDatas();
