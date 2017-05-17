@@ -2,17 +2,25 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class WorkflowService {
-    private datas: any;
+    private _witResponse: any;
+    private _yummlyRecipes: any;
 
     constructor() {
     }
 
-    getDatas(){
-        return this.datas;
+    get witResponse(): any {
+      return this._witResponse;
     }
 
-    setDatas(datas) {
-        this.datas = datas;
+    get yummlyRecipes(): any {
+      return this._yummlyRecipes;
     }
 
+    set witResponse(value: any) {
+      this._witResponse = value;
+    }
+
+    set yummlyRecipes(value: any) {
+      this._yummlyRecipes = value;
+    }
 }

@@ -43,13 +43,19 @@ export class Yummly {
     }
   }
 
-  public getRecipesFromName(name: String, callback: (res:Response) => void): void{
+  public getRecipesFromName(name: String, callback: (res:Response, goToSteps: boolean) => void): void{
     let searchRecipeUrl = "https://www.wecook.fr/web-api/recipes/search?q="+name;
-
+    let goToSteps: boolean = false;
     let headers = new Headers({ 'Authorization': this.token, 'Wecook-Version': '1'});
     this.http.get(searchRecipeUrl, {headers: headers})
       .subscribe(
-        function(response) { callback(response["_body"]) }, //mapper le json dans un objet
+        function(response) {
+          if(JSON.parse(response["_body"]).result.resources.length == 1)
+          {
+            goToSteps = true;
+          }
+          callback(response["_body"], goToSteps);
+        }, //mapper le json dans un objet
         function(error) { console.log("Error happened" + error)},
         function() { console.log("the subscription is completed")}
       );

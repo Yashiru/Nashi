@@ -10,6 +10,8 @@ import { Ingredient } from "../../models/Ingredient";
 import { WorkflowService } from "../../services/Workflow.service";
 import { Yummly } from "../../services/Yummly.service";
 import { Platform } from 'ionic-angular';
+import { Response } from '@angular/http';
+
 
 
 declare var SpeechRecognition: any;
@@ -19,7 +21,7 @@ declare var SpeechRecognition: any;
   templateUrl: 'home-page.html'
 })
 export class HomePage {
-  
+
   // var for component circle
   private fontSize = "16pt";
   private text = "";
@@ -46,15 +48,29 @@ export class HomePage {
           this._zone.run(() => this.message = msg, this.animation = "animLoad" );
         },
         (isRecipe: Boolean, result: any): void => {
+          let workflowService = new WorkflowService();
             if (isRecipe) {
-                let response = new WorkflowService();
-                response.setDatas(result);
-                this.navCtrl.push(RecipeStepPage);
+
+                this.yummly.getRecipesFromName(JSON.parse(result).recipe[0].value, (res:Response, goToSteps: boolean) => {
+                  workflowService.yummlyRecipes(res);
+
+                  if(!goToSteps)
+                  {
+                    this.navCtrl.push(RecipesPage);
+                  }
+                  else{
+                    this.navCtrl.push(RecipeStepPage);
+                  }
+                });
+
             } else {
-                // res : recipes
-                this.yummly.getRecipeFromIngrediant(result, (res: any) => {
-                    let response = new WorkflowService();
-                    response.setDatas(res);
+                let ingredients: Ingredient[] = [];
+                for (let ing of result.ingredient) {
+                  var i = new Ingredient(ing.value);
+                  ingredients.push(i);
+                }
+                this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
+                    workflowService.yummlyRecipes(res);
                     this.navCtrl.push(RecipesPage);
                 });
             }
