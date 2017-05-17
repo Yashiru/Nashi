@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 //pages
-import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
 import { Home  } from '../pages/Home/Home'
 //services
 import { Yummly } from '../services/Yummly.service';
@@ -11,7 +10,6 @@ import { NashiBot } from '../services/NashiBot.service';
 @NgModule({
   declarations: [
     MyApp,
-    SpeechRecognitionPage,
     Home
 
   ],
@@ -21,7 +19,6 @@ import { NashiBot } from '../services/NashiBot.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SpeechRecognitionPage,
     Home
 
   ],

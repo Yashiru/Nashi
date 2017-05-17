@@ -11,9 +11,17 @@ import { Response } from '@angular/http';
     templateUrl: 'Home.html'
 })
 export class Home {
-  
-    constructor(public navCtrl: NavController, private yummly: Yummly) {
 
+  public yummlyResult: any;
+
+    constructor(public navCtrl: NavController, private yummly: Yummly) {
+      let ing1: Ingredient = new Ingredient("poivron", 1, "none");
+      //let ing2: Ingredient = new Ingredient("crème", 1, "none");
+      let ings: Ingredient[] = [];
+      ings.push(ing1);
+      yummly.getRecipesFromName("tartiflette", (res: any) => {
+        console.log(res);
+      });
     }
 
 
