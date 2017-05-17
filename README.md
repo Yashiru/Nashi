@@ -42,9 +42,9 @@ Yummly service:
 		...
 		}
 	
-	-Get recipe from an recipe id, (use getRecipeFromId function with string id parameter and callback function)
-		this.yummly.getRecipeFromId("", (res)=>{
-		  let myRecipe = res.json();
+	-Get recipes from a recipe name, (use getRecipesFromName function with string id parameter and callback function)
+		this.yummly.getRecipeFromId("MY_RECIPE_NAME", (res)=>{
+		  let myRecipe = res.json(); //return all recipes with this name
 		})
 		
 	-Get recipe from ingrediants, (use getRecipeFromIngrediant function with ingredients and callback function)
