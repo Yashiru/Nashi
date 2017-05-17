@@ -6,50 +6,82 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class Yummly {
-  private apiId = "2145c78a";
-  private apiKey = "018b9abf9f3a796911b4209cb1fa83b4";
+  private token = "Bearer qFS9q2cQ4h4ijNQVBRihvQ";
 
   constructor(private http: Http){
 
   }
 
-  public getRecipeFromIngrediant(ingrediants: Ingredient[], callback: (res:Response) => void): void{
-    let url = "http://api.yummly.com/v1/api/recipes?";
+  public getRecipeFromIngrediant(ingrediants: Ingredient[], callback: (res:any) => void): void{
+    let searchRecipeUrl = "https://www.wecook.fr/web-api/recipes/search?";
+    var with_is = "[";
+
+    var i = 0;
 
     for (let ing of ingrediants){
-      let name: String;
-      if(ing.name[ing.name.length] == "s")
-      {
-        name = ing.name.substr(0, (ing.name.length-1));
-      }
-      else{
-        name = ing.name;
-      }
-      url += "allowedIngredient[]="+name+"&";
-    }
+      this.getIngerdiantIdFromName(ing.name, (idIng: number) => {
+        if(i < ingrediants.length - 1)
+        {
+          with_is += idIng+",";
+        }
+        else{
+          with_is += idIng+",";
+          with_is = with_is.substr(0, with_is.length-1);
+          with_is += "]";
+          searchRecipeUrl += "with_is="+with_is;
 
-    let headers = new Headers({ 'X-Yummly-App-ID': this.apiId, 'X-Yummly-App-Key': this.apiKey});
-    this.http.get(url, {headers: headers})
+          let headers = new Headers({ 'Authorization': this.token, 'Wecook-Version': '1'});
+          this.http.get(searchRecipeUrl, {headers: headers})
+            .subscribe(
+              function(response: Response) { callback(response['_body']) }, //mapper le json dans un objet
+              function(error) { console.log("Error happened" + error)},
+              function() { console.log("the subscription is completed")}
+            );
+        }
+        i++;
+      });
+    }
+  }
+
+  public getRecipesFromName(name: String, callback: (res:Response) => void): void{
+    let searchRecipeUrl = "https://www.wecook.fr/web-api/recipes/search?q="+name;
+
+    let headers = new Headers({ 'Authorization': this.token, 'Wecook-Version': '1'});
+    this.http.get(searchRecipeUrl, {headers: headers})
       .subscribe(
-        function(response: any) {
-          let globalJson: any = JSON.parse(response._body);
-          let jsonRecipes: any = globalJson.matches;
-          console.log(jsonRecipes);
-          callback(jsonRecipes);
-        }, //mapper le json dans un objet
+        function(response) { callback(response["_body"]) }, //mapper le json dans un objet
         function(error) { console.log("Error happened" + error)},
         function() { console.log("the subscription is completed")}
       );
 
   }
 
-  public getRecipeFromId(id: String, callback: (res:Response) => void): void{
-    let url = "http://api.yummly.com/v1/api/recipe/"+id;
+  public getIngerdiantIdFromName(name: String, callback: (idIng: number) => void): void{
 
-    let headers = new Headers({ 'X-Yummly-App-ID': this.apiId, 'X-Yummly-App-Key': this.apiKey});
-    this.http.get(url, {headers: headers})
+    if(name[name.length - 1] == "s")
+    {
+      name = name.substr(0, name.length -1);
+      console.log(name);
+    }
+
+    let getIdUrl = "https://www.wecook.fr/web-api/resources/autocomplete?q="+name+"&type=ingredient";
+    let headers = new Headers({ 'Access-Control-Allow-Origin': '*', 'Authorization': this.token, 'Wecook-Version': '1'});
+    var idToReturn: number;
+
+    this.http.get(getIdUrl, {headers: headers})
       .subscribe(
-        function(response) { callback(response) }, //mapper le json dans un objet
+        function(response) {
+          var res = JSON.parse(response["_body"]);
+          if(res.result.ingredient.length > 0){
+            for (let ing of res.result.ingredient){
+              if(ing.name == name){
+                idToReturn = ing.entity_id;
+              }
+            }
+
+            callback(idToReturn);
+          }
+        }, //mapper le json dans un objet
         function(error) { console.log("Error happened" + error)},
         function() { console.log("the subscription is completed")}
       );
