@@ -7,8 +7,9 @@ import { WorkflowService } from "../../services/Workflow.service";
   templateUrl: 'recipe-step-page.html'
 })
 export class RecipeStepPage {
+    private recipe: any;
     constructor(public navCtrl: NavController) {
-        let response = new WorkflowService();
-        response.getDatas();
+        let workflowService = new WorkflowService();
+        this.recipe = workflowService.yummlyRecipeToSay();
     }
 }

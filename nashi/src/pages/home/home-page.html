@@ -1,24 +1,27 @@
 <ion-content padding>
   <ion-grid>
     <ion-row center id="header">
-      <ion-col width-80>
+      <div class="title">
         <h2>Nashi</h2>
-      </ion-col>
-      <ion-col width-20>
-        <img src="assets/images/logo-login.svg">
-      </ion-col>
+      </div>
+      <div class="profil-picture">
+        <ion-icon name="person" color="primary"></ion-icon>
+      </div>
     </ion-row>
     <ion-row id="circle">
       <circle-nashi [entryText]="text" [entrysText]="texts" [fontSize]="fontSize" [animation]="animation"></circle-nashi>
+    </ion-row>
+    <ion-row id="mic-display">
+      <ion-icon name="mic" [ngStyle]="micColor"></ion-icon>
     </ion-row>
     <ion-row id="content">
       <p id="home-content-speech">
           {{ message }}
       </p>
     </ion-row>
-    <ion-row id="">
+    <ion-row id="help">
       <ion-col width-20 offset-80 (click)='goToAbout();'>
-        <img src="assets/images/logo-about.svg">
+        <ion-icon name="help"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>

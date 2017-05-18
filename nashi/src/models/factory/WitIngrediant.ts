@@ -11,7 +11,7 @@ export class WitIngrediant{
 
     for(var i in jsonIngrediant){
       var ingrediant = new Ingredient();
-      ingrediant.name = jsonIngrediant[i].value;
+      ingrediant.setName(jsonIngrediant[i].value);
       ingrediant.accuracyPercentage = jsonIngrediant[i].confidence;
 
       ingrediants.push(ingrediant);

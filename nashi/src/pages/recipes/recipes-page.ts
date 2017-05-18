@@ -7,8 +7,9 @@ import { WorkflowService } from "../../services/Workflow.service";
   templateUrl: 'recipes-page.html'
 })
 export class RecipesPage {
+  private recipes: any;
     constructor(public navCtrl: NavController) {
-        let response = new WorkflowService();
-        response.getDatas();
+      let workflowService = new WorkflowService();
+      this.recipes = workflowService.yummlyRecipes();
     }
 }

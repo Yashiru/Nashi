@@ -1,26 +1,102 @@
 page-home {
   ion-grid {
-    
+
     circle-nashi {
       align-self: center;
     }
     height: 100%;
 
     #header {
-      height: 15%;
+      height: 4rem;
+      width: 105%;
+
+      .title{
+        width: 82% !important;
+      }
+
+      .profil-picture{
+        width: 15% !important;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ion-icon{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 4rem;
+          width: 4rem;
+          font-size: 3rem;
+          border-radius: 2rem;
+          border: 0.01rem solid color($colors, primary, base);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      }
     }
 
     #circle {
       justify-content: center;
+      padding-top: 17rem;
       height: 60%;
     }
 
+    #mic-display{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5rem;
+
+      ion-icon{
+        font-size: 2rem;
+        -webkit-animation-duration: 1.7s;
+        animation-duration: 1.7s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        transition: 0.5s;
+      }
+    }
+
     #content {
-      height: 10%;
+      height: 30%;
     }
 
     #footer {
       height: 15%;
     }
+
+    #help{
+
+      ion-col{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      ion-icon{
+        font-size: 4rem;
+        color: #666666;
+        width: 4rem;
+        height: 4rem;
+        text-align: center;
+        border-radius: 2rem;
+        border: 1px solid #666666;
+      }
+    }
+  }
+}
+
+
+@-webkit-keyframes animListeningMic {
+  0% {
+    color: color($colors, primary, base);
+  }
+  40%{
+    color: #a5a7d8;
+  }
+  100%{
+    color: color($colors, primary, base);
+
   }
 }
