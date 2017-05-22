@@ -49,50 +49,82 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    this.platform.ready().then(() => {
-      this.bot.sayToBot(
-        () :  void => {
-          this.changeMicColor({"color": "color($colors, primary, base)"});
-        },
-        (msg: string): void => {
-          this._zone.run(() => this.message = msg, this.animation = "animLoad" );
-          this.changeMicColor({"color": "color($colors, inactive-color, base)", "animation-name": "animListeningMic", "font-size": "3rem"});
-        },
-        (isRecipe: Boolean, result: any): void => {
-          let workflowService = new WorkflowService();
-            if (isRecipe) {
-
-                this.yummly.getRecipesFromName(JSON.parse(result).recipe[0].value, (res:Response, goToSteps: boolean) => {
-                  workflowService.yummlyRecipes(res);
-
-                  if(!goToSteps)
-                  {
-                    this.navCtrl.push(RecipesPage);
-                  }
-                  else{
-                    this.navCtrl.push(RecipeStepPage);
-                  }
-                });
-
-            } else {
-                let ingredients: Ingredient[] = [];
-                for (let ing of result.ingredient) {
-                  var i = new Ingredient();
-                  var iName: String = ing.value;
-                  i.setName(iName);
-                  ingredients.push(i);
-                }
-                this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
-                    workflowService.yummlyRecipes(res);
-                    this.navCtrl.push(RecipesPage);
-                });
-            }
-        }
-      );
-    });
+    this.launchRecordProcess();
   }
 
   goToAbout() {
     this.navCtrl.push(AboutPage);
   }
+
+  private launchRecordProcess() {
+    this.texts = [
+      "Quels ingrédients avez-vous ?",
+      "Une recette en particulier ?",
+      "Que voulez vous cuisiner ?",
+    ];
+    this.changeMicColor({"color": "color($colors, inactive-mic, base)"});
+    this.platform.ready().then(() => {
+      this.bot.sayToBot(
+        () :  void => {
+          this.changeMicColor({"color": "color($colors, primary, base)", "animation-name": "animListeningMic", "font-size": "3rem"});
+        },
+        (msg: string): void => {
+          this._zone.run(() => {
+            this.message = msg;
+            this.animation = "animLoad";
+            this.texts = [
+              "...",
+              "Recherche en cours ...",
+              "Analyse en cours ...",
+            ];
+          } );
+          this.changeMicColor({"color": "color($colors, inactive-mic, base)"});
+        },
+        (isRecipe: Boolean, result: any): void => {
+          let workflowService = new WorkflowService();
+          console.log("RETURN FROM WIT :\n"+JSON.stringify(result)+"\n"+isRecipe);
+          /*
+          *
+          * {"ingredient":[{"suggested":true,"confidence":0.36704214566718,"value":"carottes","type":"value"}]}
+           */
+          if (isRecipe == true) {
+
+            this.yummly.getRecipesFromName(JSON.parse(result).recipe[0].value, (res:Response, goToSteps: boolean) => {
+              workflowService.yummlyRecipes(res);
+
+              if(!goToSteps)
+              {
+                this.navCtrl.push(RecipesPage);
+              }
+              else{
+                this.navCtrl.push(RecipeStepPage);
+              }
+            });
+
+          } else if (isRecipe == false){
+            let ingredients: Ingredient[] = [];
+            for (let ing of result.ingredient) {
+              var i = new Ingredient();
+              var iName: String = ing.value;
+              i.setName(iName);
+              ingredients.push(i);
+            }
+            this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
+              workflowService.yummlyRecipes(res);
+              this.navCtrl.push(RecipesPage);
+            });
+          }
+          else{
+            //je n'ai pas compris ce que vous voulez
+          }
+        }
+      );
+    });
+  }
 }
+
+
+
+
+
+

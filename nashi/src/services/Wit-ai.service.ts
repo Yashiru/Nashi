@@ -23,11 +23,14 @@ export class WitAiService {
 
     this.http.get(url).map(res => res.json()).subscribe(data => {
       var isRecipes: Boolean;
-      if (data.ingredient) {
+      if (data.ingredient != null) {
         isRecipes = false;
       }
-      else{
+      else if(data.recipe != null){
         isRecipes = true;
+      }
+      else {
+        isRecipes = null;
       }
 
       callback(isRecipes, data);

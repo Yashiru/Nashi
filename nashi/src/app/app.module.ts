@@ -6,7 +6,7 @@ import { HomePage  } from '../pages/home/home-page'
 import { RecipesPage  } from '../pages/recipes/recipes-page'
 import { RecipeStepPage  } from '../pages/recipe-step/recipe-step-page'
 import { AboutPage  } from '../pages/about/about-page'
-import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { TextToSpeech } from 'ionic-native';
 import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
 import { TextHelper } from '../component/textHelper/textHelper';
 import { LoginPage } from '../pages/loginPage/login-page';
@@ -43,7 +43,7 @@ export function getAuthHttp(http) {
     // Components
     CircleNashi,
     TextHelper
-    
+
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -66,7 +66,7 @@ export function getAuthHttp(http) {
   providers:
   [
     {
-      provide: ErrorHandler, 
+      provide: ErrorHandler,
       useClass: IonicErrorHandler
     },
     {
