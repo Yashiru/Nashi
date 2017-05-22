@@ -26,11 +26,14 @@ export class HomePage {
   private fontSize = "16pt";
   private text = "";
   private texts = [
-    "Hello",
-    "What do you want",
-    "to eat ?",
+    "Quels ingrédients avez-vous ?",
+    "Une recette en particulier ?",
+    "Que voulez vous cuisiner ?",
   ];
   private animation = "animListen";
+  public micColor: any = {
+    "color": "color($colors, inactive-color, base)",
+  };
 
   // var for component speechRecognition
   _zone: any;
@@ -41,11 +44,19 @@ export class HomePage {
     this.navCtrl = navCtrl;
   }
 
+  private changeMicColor(color: any){
+    this.micColor = color;
+  }
+
   ionViewDidLoad() {
     this.platform.ready().then(() => {
       this.bot.sayToBot(
+        () :  void => {
+          this.changeMicColor({"color": "color($colors, primary, base)"});
+        },
         (msg: string): void => {
           this._zone.run(() => this.message = msg, this.animation = "animLoad" );
+          this.changeMicColor({"color": "color($colors, inactive-color, base)", "animation-name": "animListeningMic", "font-size": "3rem"});
         },
         (isRecipe: Boolean, result: any): void => {
           let workflowService = new WorkflowService();
@@ -66,7 +77,9 @@ export class HomePage {
             } else {
                 let ingredients: Ingredient[] = [];
                 for (let ing of result.ingredient) {
-                  var i = new Ingredient(ing.value);
+                  var i = new Ingredient();
+                  var iName: String = ing.value;
+                  i.setName(iName);
                   ingredients.push(i);
                 }
                 this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {

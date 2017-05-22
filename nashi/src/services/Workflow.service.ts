@@ -4,6 +4,7 @@ import {Injectable} from "@angular/core";
 export class WorkflowService {
     private _witResponse: any;
     private _yummlyRecipes: any;
+    private _yummlyRecipeToSay: any;
 
     constructor() {
     }
@@ -16,11 +17,19 @@ export class WorkflowService {
       return this._yummlyRecipes;
     }
 
+    get yummlyRecipeToSay(): any {
+      return this._yummlyRecipeToSay;
+    }
+
     set witResponse(value: any) {
       this._witResponse = value;
     }
 
     set yummlyRecipes(value: any) {
       this._yummlyRecipes = value;
+    }
+
+    set yummlyRecipeToSay(value: any) {
+      this._yummlyRecipeToSay = value;
     }
 }
