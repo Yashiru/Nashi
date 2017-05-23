@@ -8,7 +8,5 @@ import { WorkflowService } from "../../services/Workflow.service";
 })
 export class RecipeStepPage {
     constructor(public navCtrl: NavController) {
-        let response = new WorkflowService();
-        response.getDatas();
     }
 }

@@ -5,6 +5,7 @@ import { TextHelper } from '../../component/textHelper/textHelper';
 import { RecipesPage } from '../recipes/recipes-page';
 import { RecipeStepPage } from '../recipe-step/recipe-step-page';
 import { AboutPage } from '../about/about-page';
+import { LoginPage } from '../loginPage/login-page';
 import { NashiBot } from '../../services/NashiBot.service';
 import { Ingredient } from "../../models/Ingredient";
 import { WorkflowService } from "../../services/Workflow.service";
@@ -94,5 +95,9 @@ export class HomePage {
 
   goToAbout() {
     this.navCtrl.push(AboutPage);
+  }
+
+  goToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 }
