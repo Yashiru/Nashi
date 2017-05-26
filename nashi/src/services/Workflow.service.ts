@@ -9,27 +9,27 @@ export class WorkflowService {
     constructor() {
     }
 
-    get witResponse(): any {
+    getWitResponse(): any {
       return this._witResponse;
     }
 
-    get yummlyRecipes(): any {
+    getYummlyRecipes(): any {
       return this._yummlyRecipes;
     }
 
-    get yummlyRecipeToSay(): any {
+    getYummlyRecipeToSay(): any {
       return this._yummlyRecipeToSay;
     }
 
-    set witResponse(value: any) {
+    setWitResponse(value: any) {
       this._witResponse = value;
     }
 
-    set yummlyRecipes(value: any) {
+    setYummlyRecipes(value: any) {
       this._yummlyRecipes = value;
     }
 
-    set yummlyRecipeToSay(value: any) {
+    setYummlyRecipeToSay(value: any) {
       this._yummlyRecipeToSay = value;
     }
 }

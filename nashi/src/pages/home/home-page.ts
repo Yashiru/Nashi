@@ -63,6 +63,7 @@ export class HomePage {
       "Que voulez vous cuisiner ?",
     ];
     this.changeMicColor({"color": "color($colors, inactive-mic, base)"});
+    let nav = this.navCtrl;
     this.platform.ready().then(() => {
       this.bot.sayToBot(
         () :  void => {
@@ -82,37 +83,38 @@ export class HomePage {
         },
         (isRecipe: Boolean, result: any): void => {
           let workflowService = new WorkflowService();
-          console.log("RETURN FROM WIT :\n"+JSON.stringify(result)+"\n"+isRecipe);
-          /*
-          *
-          * {"ingredient":[{"suggested":true,"confidence":0.36704214566718,"value":"carottes","type":"value"}]}
-           */
           if (isRecipe == true) {
 
             this.yummly.getRecipesFromName(JSON.parse(result).recipe[0].value, (res:Response, goToSteps: boolean) => {
-              workflowService.yummlyRecipes(res);
+              workflowService.setYummlyRecipes(res);
 
               if(!goToSteps)
               {
-                this.navCtrl.push(RecipesPage);
+                nav.push(RecipesPage);
               }
               else{
-                this.navCtrl.push(RecipeStepPage);
+                nav.push(RecipeStepPage);
               }
             });
 
           } else if (isRecipe == false){
+            console.log("\n\n\n\n\n\n");
             let ingredients: Ingredient[] = [];
             for (let ing of result.ingredient) {
               var i = new Ingredient();
               var iName: String = ing.value;
               i.setName(iName);
               ingredients.push(i);
+              console.log(i.name+"\n");
             }
+            console.log("\n\n\n\n\n\n");
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
-              workflowService.yummlyRecipes(res);
-              this.navCtrl.push(RecipesPage);
+              workflowService.setYummlyRecipes(res);
+              console.log("return from wecook : \nx"+res);
+
+              nav.push(RecipesPage);
             });
+            console.log("\n\n\n\n\n\n");
           }
           else{
             //je n'ai pas compris ce que vous voulez

@@ -39,6 +39,7 @@ export class NashiBot {
 
     this.recognition.start();
     callbackStratListening();
+
     return "";
   }
 

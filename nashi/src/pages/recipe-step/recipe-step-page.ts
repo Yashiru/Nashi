@@ -10,6 +10,6 @@ export class RecipeStepPage {
     private recipe: any;
     constructor(public navCtrl: NavController) {
         let workflowService = new WorkflowService();
-        this.recipe = workflowService.yummlyRecipeToSay();
+        this.recipe = workflowService.getYummlyRecipeToSay();
     }
 }
