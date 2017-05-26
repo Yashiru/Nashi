@@ -84,8 +84,9 @@ export class HomePage {
         (isRecipe: Boolean, result: any): void => {
           let workflowService = new WorkflowService();
           if (isRecipe == true) {
+            let recipes = result['recipe'];
 
-            this.yummly.getRecipesFromName(JSON.parse(result).recipe[0].value, (res:Response, goToSteps: boolean) => {
+            this.yummly.getRecipesFromName(recipes[0].value, (res:Response, goToSteps: boolean) => {
               workflowService.setYummlyRecipes(res);
 
               if(!goToSteps)
