@@ -10,7 +10,7 @@ declare var SpeechRecognition: any;
 export class NashiBot {
   recognition: any;
 
-  constructor(/*private tts: TextToSpeech, */platform: Platform, public wit: WitAiService){
+  constructor(platform: Platform, public wit: WitAiService){
     platform.ready().then(() => {
       this.recognition = new SpeechRecognition();
       this.recognition.lang = 'fr-FR';
@@ -24,9 +24,13 @@ export class NashiBot {
   }
 
   public speek(message: string): void{
-    /*this.tts.speak(message)
-      .then(() => console.log('Success').callback())
-      .catch((reason: any) => console.log(reason));*/
+    TextToSpeech.speak({
+      text: message,
+      locale: 'fr-FR',
+      rate: 1.0
+    })
+      .then(() => console.log('Success')/*callback()*/)
+      .catch((reason: any) => console.log(reason));
   }
 
   public sayToBot(callbackStratListening: () => void, callbackToGetMessage: (msg: String) => void, callback: (isRecipe: Boolean, datas: any) => void): String{

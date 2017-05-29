@@ -94,7 +94,6 @@ export class HomePage {
               }
               else{
                 this.workflowService.setYummlyRecipeToSay(res);
-                //console.log(JSON.stringify(res));
                 nav.push(RecipeStepPage, {
                   recipeId: res["id"]
                 });
@@ -103,7 +102,6 @@ export class HomePage {
 
           } else if (isRecipe == false){
             let ingredients: Ingredient[] = [];
-            console.log("++++++++++++"+JSON.stringify(result.ingrediant));
             for (let ing of result.ingrediant) {
               var i = new Ingredient();
               var iName: String = ing.value;
@@ -113,6 +111,7 @@ export class HomePage {
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
               this.workflowService.setYummlyRecipes(res);
               nav.push(RecipesPage);
+              this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
           }
           else{
