@@ -8,6 +8,7 @@ import { RecipeStepPage  } from '../pages/recipe-step/recipe-step-page'
 import { AboutPage  } from '../pages/about/about-page'
 import { TextToSpeech } from 'ionic-native';
 import { CircleNashi } from '../component/circleNashiBot/circle-nashi';
+import { CircleNashiSteps } from '../component/circleNashiBotStepsPage/circle-nashi-steps';
 import { TextHelper } from '../component/textHelper/textHelper';
 import { LoginPage } from '../pages/loginPage/login-page';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
@@ -42,6 +43,7 @@ export function getAuthHttp(http) {
 
     // Components
     CircleNashi,
+    CircleNashiSteps,
     TextHelper
 
   ],
@@ -61,6 +63,7 @@ export function getAuthHttp(http) {
 
     // Components
     CircleNashi,
+    CircleNashiSteps,
     TextHelper
   ],
   providers:

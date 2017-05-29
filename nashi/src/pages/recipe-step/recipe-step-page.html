@@ -1,1 +1,28 @@
-<h1>Recipe step enonciation</h1>
+<section class="header">
+  <div class="back">
+    <ion-icon name="arrow-back"></ion-icon> Retour
+  </div>
+  <div class="title">
+    <h1>{{recipeToSay.name}}</h1>
+  </div>
+</section>
+<ion-scroll scrollX="true">
+  <section class="timers">
+    <div *ngIf="timers.length > 0">
+      <div *ngFor="let timer of timers" class="timer">
+        <div class="reason">{{timer.reason}}</div>
+        <div class="time">
+          <span class="min">{{timer.timerMinutesAmount}}</span> m
+          <span class="sec">{{timer.timerSecondesAmount}}</span> s
+        </div>
+      </div>
+    </div>
+
+    <div class="no-timer" *ngIf="timers.length == 0">
+      Aucun minuteur lancé
+    </div>
+  </section>
+</ion-scroll>
+<section class="steps">
+  <circle-nashi-steps [entryText]="stepText || emptyText" [actualStep]="actualStep" [stepsNumber]="steps.length" [animation]="animation"></circle-nashi-steps>
+</section>

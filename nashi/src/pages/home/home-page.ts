@@ -39,7 +39,7 @@ export class HomePage {
   _zone: any;
   message: string;
 
-  constructor(public navCtrl: NavController, _zone: NgZone, private bot: NashiBot, public yummly: Yummly, public platform: Platform) {
+  constructor(public navCtrl: NavController, _zone: NgZone, private bot: NashiBot, public yummly: Yummly, public platform: Platform, public workflowService: WorkflowService) {
     this._zone = _zone;
     this.navCtrl = navCtrl;
   }
@@ -82,40 +82,38 @@ export class HomePage {
           this.changeMicColor({"color": "color($colors, inactive-mic, base)"});
         },
         (isRecipe: Boolean, result: any): void => {
-          let workflowService = new WorkflowService();
           if (isRecipe == true) {
             let recipes = result['recipe'];
 
             this.yummly.getRecipesFromName(recipes[0].value, (res:Response, goToSteps: boolean) => {
-              workflowService.setYummlyRecipes(res);
 
               if(!goToSteps)
               {
+                this.workflowService.setYummlyRecipes(res);
                 nav.push(RecipesPage);
               }
               else{
-                nav.push(RecipeStepPage);
+                this.workflowService.setYummlyRecipeToSay(res);
+                //console.log(JSON.stringify(res));
+                nav.push(RecipeStepPage, {
+                  recipeId: res["id"]
+                });
               }
             });
 
           } else if (isRecipe == false){
-            console.log("\n\n\n\n\n\n");
             let ingredients: Ingredient[] = [];
-            for (let ing of result.ingredient) {
+            console.log("++++++++++++"+JSON.stringify(result.ingrediant));
+            for (let ing of result.ingrediant) {
               var i = new Ingredient();
               var iName: String = ing.value;
               i.setName(iName);
               ingredients.push(i);
-              console.log(i.name+"\n");
             }
-            console.log("\n\n\n\n\n\n");
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
-              workflowService.setYummlyRecipes(res);
-              console.log("return from wecook : \nx"+res);
-
+              this.workflowService.setYummlyRecipes(res);
               nav.push(RecipesPage);
             });
-            console.log("\n\n\n\n\n\n");
           }
           else{
             //je n'ai pas compris ce que vous voulez

@@ -30,7 +30,7 @@ export class NashiBot {
   }
 
   public sayToBot(callbackStratListening: () => void, callbackToGetMessage: (msg: String) => void, callback: (isRecipe: Boolean, datas: any) => void): String{
-    /*this.recognition.onresult = (event => {
+    this.recognition.onresult = (event => {
       if (event.results.length > 0) {
         this.wit.sayToBot(event.results[0][0].transcript, callback);
         callbackToGetMessage(event.results[0][0].transcript);
@@ -38,11 +38,11 @@ export class NashiBot {
     });
 
     this.recognition.start();
-    callbackStratListening();*/
-
-    this.wit.sayToBot("je veux cuixiner une tartiflette", callback);
-    callbackToGetMessage("je veux cuixiner une tartiflette");
     callbackStratListening();
+
+    /*this.wit.sayToBot("je veux cuixiner une tartiflette", callback);
+    callbackToGetMessage("je veux cuixiner une tartiflette");
+    callbackStratListening();*/
 
     return "";
   }

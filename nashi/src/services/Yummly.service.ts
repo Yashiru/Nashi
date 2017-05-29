@@ -69,7 +69,6 @@ export class Yummly {
     if(name[name.length - 1] == "s")
     {
       name = name.substr(0, name.length -1);
-      console.log(name);
     }
 
     let getIdUrl = "https://www.wecook.fr/web-api/resources/autocomplete?q="+name+"&type=ingredient";
@@ -89,6 +88,22 @@ export class Yummly {
 
             callback(idToReturn);
           }
+        }, //mapper le json dans un objet
+        function(error) { console.log("Error happened" + error)},
+        function() { console.log("the subscription is completed")}
+      );
+
+  }
+
+  public getFullRecipe(recipeId: number, callback:(res:Response) => void)
+  {
+      let searchRecipeUrl = "https://www.wecook.fr/web-api/recipes?id="+recipeId;
+    let headers = new Headers({ 'Authorization': this.token, 'Wecook-Version': '1'});
+    this.http.get(searchRecipeUrl, {headers: headers})
+      .subscribe(
+        function(response) {
+          console.log("\n\n\n\nRetour de wecook ID "+recipeId+" :"+JSON.stringify(response)+"\n\n\n\n");
+          callback(response);
         }, //mapper le json dans un objet
         function(error) { console.log("Error happened" + error)},
         function() { console.log("the subscription is completed")}

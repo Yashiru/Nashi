@@ -16,14 +16,15 @@ export class WitAiService {
   }
 
   public sayToBot(message : String, callback: (datas:any, ingredients: any) => void): void{
-    let url: string = "http://leo-fasano.com/nashi/web/wit?message=" + message;
+    let url: string = "http://leo-fasano.com/nashi/web/wit/?language=fr&message=" + message;
     let headers = new Headers({ 'Access-Control-Allow-Origin': "localhost:8100"});
 
     let options = new RequestOptions({ headers: headers });
 
     this.http.get(url).map(res => res.json()).subscribe(data => {
       var isRecipes: Boolean;
-      if (data.ingredient != null) {
+      if (data.ingrediant != null) {
+        console.log(JSON.stringify(data.ingrediant));
         isRecipes = false;
       }
       else if(data.recipe != null){
