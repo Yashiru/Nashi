@@ -1,1 +1,18 @@
-<h1>Recipes choice</h1>
+<section class="header">
+  <div class="back">
+    <ion-icon name="arrow-back"></ion-icon> Retour
+  </div>
+  <div class="title">
+    <h1>Liste des recettes</h1>
+  </div>
+</section>
+<ion-scroll scrollY="true" class="recipes">
+    <div *ngFor="let recipe of recipes">
+        <img src="{{ recipe.url }}">
+        <!--<div ngStyle="{{ recipe.url }}">-->
+            <h2>{{ recipe.name }}</h2>
+        <!--</div>-->
+    </div>
+</ion-scroll>
+
+

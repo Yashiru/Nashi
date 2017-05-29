@@ -85,17 +85,17 @@ export class HomePage {
           if (isRecipe == true) {
             let recipes = result['recipe'];
 
-            this.yummly.getRecipesFromName(recipes[0].value, (res:Response, goToSteps: boolean) => {
-
+            this.yummly.getRecipesFromName(recipes[0].value, (res:any, goToSteps: boolean) => {
               if(!goToSteps)
               {
-                this.workflowService.setYummlyRecipes(res);
-                nav.push(RecipesPage);
+                nav.push(RecipesPage, {
+                  recipes: JSON.parse(res).result
+                });
               }
               else{
                 this.workflowService.setYummlyRecipeToSay(res);
                 nav.push(RecipeStepPage, {
-                  recipeId: res["id"]
+                  recipeId: JSON.parse(res).id
                 });
               }
             });
@@ -109,8 +109,9 @@ export class HomePage {
               ingredients.push(i);
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
-              this.workflowService.setYummlyRecipes(res);
-              nav.push(RecipesPage);
+              nav.push(RecipesPage, {
+                  recipes: JSON.parse(res).result
+                });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
           }
