@@ -21,6 +21,7 @@ circle-nashi-steps{
       justify-content: flex-start;
       align-items: center;
       flex-direction: column;
+      margin-top: 7.5rem;
 
       .circle{
         width: 100%;
@@ -67,10 +68,19 @@ circle-nashi-steps{
 
       .number-step{
         font-size: 15pt;
+        margin-top: -21rem;
 
         span{
           color: #d81b60;
+          font-size: 17pt;
         }
+      }
+
+      .next-step{
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

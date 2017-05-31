@@ -15,7 +15,7 @@ export class WitAiService {
 
   }
 
-  public sayToBot(message : String, callback: (datas:any, ingredients: any) => void): void{
+  public sayToBot(message : String, callback: (datas:any, ingredients: any, isTimer?:boolean) => void): void{
     let url: string = "http://leo-fasano.com/nashi/web/wit/?language=fr&message=" + message;
     let headers = new Headers({ 'Access-Control-Allow-Origin': "localhost:8100"});
 
@@ -23,6 +23,7 @@ export class WitAiService {
 
     this.http.get(url).map(res => res.json()).subscribe(data => {
       var isRecipes: Boolean;
+      var isTimer: boolean = null;
       if (data.ingrediant != null) {
         console.log(JSON.stringify(data.ingrediant));
         isRecipes = false;
@@ -30,11 +31,14 @@ export class WitAiService {
       else if(data.recipe != null){
         isRecipes = true;
       }
+      else if(data.timerAmount != null){
+        isTimer = true;
+      }
       else {
         isRecipes = null;
       }
 
-      callback(isRecipes, data);
+      callback(isRecipes, data, isTimer);
     });
 
   }

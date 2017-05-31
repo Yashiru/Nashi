@@ -6,23 +6,30 @@
     <h1>{{recipeToSay.name}}</h1>
   </div>
 </section>
-<ion-scroll scrollX="true">
-  <section class="timers">
-    <div *ngIf="timers.length > 0">
-      <div *ngFor="let timer of timers" class="timer">
-        <div class="reason">{{timer.reason}}</div>
-        <div class="time">
-          <span class="min">{{timer.timerMinutesAmount}}</span> m
-          <span class="sec">{{timer.timerSecondesAmount}}</span> s
-        </div>
+<ion-scroll scrollX="true" class="timers" (click)="addTimer()">
+  <div *ngIf="timers.length > 0">
+    <li *ngFor="let timer of timers" class="timer">
+      <div class="reason">{{timer.reason}}</div>
+      <div class="time">
+        <span class="min">{{timer.timerMinutesAmount}}</span> m
+        <span class="sec">{{timer.timerSecondesAmount}}</span> s
       </div>
-    </div>
+    </li>
+  </div>
 
-    <div class="no-timer" *ngIf="timers.length == 0">
-      Aucun minuteur lancé
-    </div>
-  </section>
+  <div class="no-timer" *ngIf="timers.length == 0">
+    {{text}} <ion-icon name="mic" [ngStyle]="micColor"></ion-icon>
+  </div>
 </ion-scroll>
 <section class="steps">
   <circle-nashi-steps [entryText]="stepText || emptyText" [actualStep]="actualStep" [stepsNumber]="steps.length" [animation]="animation"></circle-nashi-steps>
+  <div class="next-step">
+    <button ion-button color="primary" clear (click)="previousStep()" [disabled]="backDisabled">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+
+    <button ion-button color="primary" clear (click)="nextStep()" [disabled]="fowardDisabled">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </div>
 </section>

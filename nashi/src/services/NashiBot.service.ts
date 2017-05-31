@@ -23,17 +23,23 @@ export class NashiBot {
     });
   }
 
-  public speek(message: string): void{
+  public speek(message: string, callback?: () => void): void{
     TextToSpeech.speak({
       text: message,
       locale: 'fr-FR',
-      rate: 1.0
+      rate: 1.15
     })
-      .then(() => console.log('Success')/*callback()*/)
+      .then(() => {
+      console.log('Success')
+      if(callback)
+      {
+        callback();
+      }
+    })
       .catch((reason: any) => console.log(reason));
   }
 
-  public sayToBot(callbackStratListening: () => void, callbackToGetMessage: (msg: String) => void, callback: (isRecipe: Boolean, datas: any) => void): String{
+  public sayToBot(callbackStratListening: () => void, callbackToGetMessage: (msg: String) => void, callback: (isRecipe: Boolean, datas: any, isTimer:boolean) => void): String{
     this.recognition.onresult = (event => {
       if (event.results.length > 0) {
         this.wit.sayToBot(event.results[0][0].transcript, callback);
