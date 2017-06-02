@@ -6,13 +6,16 @@
     <h1>Liste des recettes</h1>
   </div>
 </section>
-<ion-scroll scrollY="true" class="recipes">
-    <div *ngFor="let recipe of recipes">
-        <img src="{{ recipe.url }}">
-        <!--<div ngStyle="{{ recipe.url }}">-->
+<ion-scroll scrollY="true">
+    <div *ngFor="let recipe of recipes" class="listrecipes">
+        <div class="recipes">
+            <img src="{{ recipe.url }}">
             <h2>{{ recipe.name }}</h2>
-        <!--</div>-->
+        </div>
     </div>
 </ion-scroll>
+<p id="home-content-speech">
+    
+</p>
 
 

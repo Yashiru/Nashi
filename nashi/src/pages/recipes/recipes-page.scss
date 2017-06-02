@@ -1,5 +1,28 @@
 page-recipes {
-    .recipes {
-        height: 100%;
+    ion-scroll {
+        margin-top: 75px;
+        height: 300px !important;
+        .listrecipes {
+            height: 100%;
+            width: 100%;
+
+            .recipes {
+                height: 100px;
+                position: relative;
+                img {
+                    position: absolute;
+                    width: 100%;
+                    filter: brightness(0.9);
+                }
+                h2 {
+                    position: absolute;
+                    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.75);
+                    color: #FFFFFF;
+                    width: 100%;
+                    top: 20%;
+                    text-align: center;
+                }
+            }
+        }
     }
 }
