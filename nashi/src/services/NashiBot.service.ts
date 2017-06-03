@@ -39,20 +39,29 @@ export class NashiBot {
       .catch((reason: any) => console.log(reason));
   }
 
-  public sayToBot(callbackStratListening: () => void, callbackToGetMessage: (msg: String) => void, callback: (isRecipe: Boolean, datas: any, isTimer:boolean) => void): String{
-    this.recognition.onresult = (event => {
-      if (event.results.length > 0) {
-        this.wit.sayToBot(event.results[0][0].transcript, callback);
-        callbackToGetMessage(event.results[0][0].transcript);
-      }
-    });
+  public sayToBot( callbackStratListening: () => void, callbackToGetMessage: (msg: String) => void, callback: (isRecipe: Boolean, datas: any, isTimer:boolean) => void, msg?: string): String{
+    if(msg != null && msg != "")
+    {
+      setTimeout(() => {
+        callbackToGetMessage(msg);
+        this.wit.sayToBot(msg, callback);
+      }, 500);
 
-    this.recognition.start();
+    }
+    else
+    {
+      this.recognition.onresult = (event => {
+        if (event.results.length > 0) {
+          this.wit.sayToBot(event.results[0][0].transcript, callback);
+          callbackToGetMessage(event.results[0][0].transcript);
+        }
+      });
+
+      this.recognition.start();
+    }
+
+
     callbackStratListening();
-
-    /*this.wit.sayToBot("je veux cuixiner une tartiflette", callback);
-    callbackToGetMessage("je veux cuixiner une tartiflette");
-    callbackStratListening();*/
 
     return "";
   }

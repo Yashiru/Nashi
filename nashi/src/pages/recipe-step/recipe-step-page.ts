@@ -27,6 +27,7 @@ export class RecipeStepPage {
   private text: string = "Cliquez pour ajouter un minuteur";
   private fowardDisabled: boolean = false;
   private backDisabled: boolean = true;
+  private sayInstruction: boolean[] = [];
 
   constructor(private bot: NashiBot, public navCtrl: NavController, private _zone: NgZone, public navParams: NavParams, public workflowService: WorkflowService, public yummly: Yummly) {
     this.recipeId = this.navParams.get("recipeId");
@@ -35,6 +36,10 @@ export class RecipeStepPage {
       this._zone.run(() => {
         this.recipeToSay = data.result[0];
         this.steps = this.recipeToSay.steps;
+        for(let step of this.steps)
+        {
+          this.sayInstruction.push(true);
+        }
       });
       this.stepText = data.result[0].steps[this.actualStep].step;
     });
@@ -87,7 +92,8 @@ export class RecipeStepPage {
           this.text = "Cliquez pour ajouter un minuteur";
           this.bot.speek("je n'ais pas compris");
         }
-      }
+      },
+      "met un minuteur 3 minutes 30"
     );
 
   }
@@ -128,7 +134,21 @@ export class RecipeStepPage {
       this.backDisabled = false;
       // FIN DU PROCESS
     }
+
+    if(this.sayInstruction[this.actualStep])
+    {
+      this.bot.speek(this.stepText);
+    }
+
     this.actualStep += 1;
+    for(let bool of this.sayInstruction)
+    {
+      if(bool)
+      {
+        bool = false;
+        break;
+      }
+    }
   }
 
   public previousStep() {

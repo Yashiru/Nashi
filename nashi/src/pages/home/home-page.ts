@@ -95,6 +95,7 @@ export class HomePage {
           this.changeMicColor({"color": "color($colors, inactive-mic, base)"});
         },
         (isRecipe: Boolean, result: any, isTimer: boolean): void => {
+          console.log("here is ok 1");
           if (isRecipe == true) {
             didntUnderstood = false;
             let recipes = result['recipe'];
@@ -107,6 +108,7 @@ export class HomePage {
               }
               else {
                 this.workflowService.setYummlyRecipeToSay(res);
+                console.log("here we go 2 ");
                 nav.push(RecipeStepPage, {
                   recipeId: res["id"]
                 });
@@ -135,7 +137,8 @@ export class HomePage {
               }
             );
           }
-        }
+        },
+        "lance une tartiflette"
       );
     });
   }

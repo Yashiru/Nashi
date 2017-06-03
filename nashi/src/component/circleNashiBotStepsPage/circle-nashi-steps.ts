@@ -9,22 +9,17 @@ import {Observable} from "rxjs";
 
 })
 export class CircleNashiSteps {
-  @Input()
-  entryText: string;
-
-  @Input()
-  entrysText: String[];
 
   @Input()
   animation: String;
 
   @Input()
-  actualStep: number;
-
-  @Input()
-  stepsNumber: number;
+  steps: any;
 
   public fontSize = "16pt";
+  public actualstep: number = 0;
+  public fowardDisabled: boolean = false;
+  public backDisabled: boolean = true;
   public boolToEmit: boolean = true;
   public circleStyle: any = {
     fill: "transparent",
@@ -70,6 +65,27 @@ export class CircleNashiSteps {
       'stroke-dasharray': "2%, 208%",
       "stroke-dashoffset": "-68%"
     };
+  }
+
+  private changeStep(isNext: boolean): void{
+    if(isNext){
+      if(this.actualstep == 0){
+        this.backDisabled = false;
+      }
+      if(this.actualstep == this.steps.length - 1){
+        this.fowardDisabled = true;
+      }
+      this.actualstep += 1;
+    }
+    else{
+      if(this.actualstep == 1){
+        this.backDisabled = true;
+      }
+      if(this.actualstep == this.steps.length){
+        this.fowardDisabled = false;
+      }
+      this.actualstep -= 1;
+    }
   }
 }
 

@@ -22,14 +22,5 @@
   </div>
 </ion-scroll>
 <section class="steps">
-  <circle-nashi-steps [entryText]="stepText || emptyText" [actualStep]="actualStep" [stepsNumber]="steps.length" [animation]="animation"></circle-nashi-steps>
-  <div class="next-step">
-    <button ion-button color="primary" clear (click)="previousStep()" [disabled]="backDisabled">
-      <ion-icon name="arrow-back"></ion-icon>
-    </button>
-
-    <button ion-button color="primary" clear (click)="nextStep()" [disabled]="fowardDisabled">
-      <ion-icon name="arrow-forward"></ion-icon>
-    </button>
-  </div>
+  <circle-nashi-steps [steps]="steps" [animation]="animation"></circle-nashi-steps>
 </section>
