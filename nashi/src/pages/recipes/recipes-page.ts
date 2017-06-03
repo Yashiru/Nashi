@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Yummly} from "../../services/Yummly.service";
+import { HomePage } from '../home/home-page';
 
 
 @Component({
@@ -23,5 +24,9 @@ export class RecipesPage {
         i++;
       }
     }
+  }
+
+  retour() {
+    this.navCtrl.push(HomePage);
   }
 }

@@ -5,24 +5,32 @@ page-recipes {
         .listrecipes {
             height: 100%;
             width: 100%;
-
-            .recipes {
-                height: 100px;
-                position: relative;
-                img {
-                    position: absolute;
-                    width: 100%;
-                    filter: brightness(0.9);
-                }
-                h2 {
-                    position: absolute;
-                    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.75);
-                    color: #FFFFFF;
-                    width: 100%;
-                    top: 20%;
-                    text-align: center;
-                }
+        }
+        .recipes {
+            height: 100px;
+            position: relative;
+            box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 1) inset;
+            background-color: #FFF;
+            img {
+                opacity: 0.7;
+                position: absolute;
+                width: 100%;
+                filter: brightness(0.9);
             }
+            h2 {
+                position: absolute;
+                text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.75);
+                color: #FFFFFF;
+                width: 100%;
+                top: 20%;
+                text-align: center;
+            }
+        }
+
+        .stop {
+            height: 100px;
+            position: relative;
+            background-color: white;
         }
     }
 }
