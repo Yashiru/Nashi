@@ -77,18 +77,14 @@ circle-nashi-steps{
       }
 
       .next-step{
-        width:100%;
+        margin-top: 58%;
+        width:35%;
+        height: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;
       }
     }
-  }
-
-  button{
-    position: fixed !important;
-    top:0;
-    left: 0;
   }
 
   .text{

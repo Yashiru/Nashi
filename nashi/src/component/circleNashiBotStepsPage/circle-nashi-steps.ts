@@ -21,6 +21,9 @@ export class CircleNashiSteps {
   public fowardDisabled: boolean = false;
   public backDisabled: boolean = true;
   public boolToEmit: boolean = true;
+  private stepsString: string;
+  private stepText: string = "";
+  private JSON: any = JSON;
   public circleStyle: any = {
     fill: "transparent",
     opacity: "0",
@@ -34,6 +37,14 @@ export class CircleNashiSteps {
   public stop: Boolean;
 
   constructor(public navCtrl: NavController) {
+
+  }
+
+  ionViewDidLoad(){
+    if(this.steps != null)
+    {
+      this.stepsString = this.steps[this.actualstep];
+    }
 
   }
 
@@ -72,7 +83,7 @@ export class CircleNashiSteps {
       if(this.actualstep == 0){
         this.backDisabled = false;
       }
-      if(this.actualstep == this.steps.length - 1){
+      if(this.actualstep == this.steps.length - 2){
         this.fowardDisabled = true;
       }
       this.actualstep += 1;
