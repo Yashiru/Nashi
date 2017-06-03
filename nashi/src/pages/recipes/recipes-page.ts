@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Yummly} from "../../services/Yummly.service";
 import { HomePage } from '../home/home-page';
+import { LoginPage } from '../loginPage/login-page';
 
 
 @Component({
@@ -28,5 +29,9 @@ export class RecipesPage {
 
   retour() {
     this.navCtrl.push(HomePage);
+  }
+
+  goToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 }

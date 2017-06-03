@@ -33,4 +33,29 @@ page-recipes {
             background-color: white;
         }
     }
+
+    header {
+        width: 100%;
+    }
+    .profil-picture{
+        float: right;
+        width: 15% !important;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ion-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 4rem;
+        width: 4rem;
+        font-size: 3rem;
+        border-radius: 2rem;
+        border: 0.01rem solid color($colors, primary, base);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        }
+    }
 }
