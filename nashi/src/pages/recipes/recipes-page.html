@@ -1,1 +1,26 @@
-<h1>Recipes choice</h1>
+    <section class="header">
+    <div class="back" (click)="retour()">
+        <ion-icon name="arrow-back"></ion-icon> Retour
+    </div>
+    <div class="profil-picture" (click)="goToLogin()">
+        <ion-icon name="person" color="primary"></ion-icon>
+    </div>
+    <div class="title">
+        <h1>Liste des recettes</h1>
+    </div>
+</section>
+<ion-scroll scrollY="true">
+    <div *ngFor="let recipe of recipes" class="listrecipes">
+        <div class="recipes">
+            <img src="{{ recipe.url }}">
+            <h2>{{ recipe.name }}</h2>
+        </div>
+    </div>
+     <div class="stop"></div>
+     <div class="stop"></div>
+</ion-scroll>
+<p id="home-content-speech">
+
+</p>
+
+

@@ -50,13 +50,12 @@ export class Yummly {
     this.http.get(searchRecipeUrl, {headers: headers})
       .subscribe(
         function(response) {
-          /*if(JSON.parse(response["_body"]).result.resources.length == 1)
+          let recipe = JSON.parse(response["_body"]).result.resources;
+          if(JSON.parse(response["_body"]).result.resources.length == 1)
           {
             goToSteps = true;
-          }*/
-          goToSteps = true;
-          let recipe = JSON.parse(response["_body"]).result.resources[0];
-          callback(/*response["_body"]*/recipe, goToSteps);
+          }
+          callback(recipe, goToSteps);
         }, //mapper le json dans un objet
         function(error) { console.log("Error happened" + error)},
         function() { console.log("the subscription is completed")}

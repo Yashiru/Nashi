@@ -95,20 +95,20 @@ export class HomePage {
           this.changeMicColor({"color": "color($colors, inactive-mic, base)"});
         },
         (isRecipe: Boolean, result: any, isTimer: boolean): void => {
-          console.log("here is ok 1");
           if (isRecipe == true) {
             didntUnderstood = false;
-            let recipes = result['recipe'];
+            let recipes: any[] = result.recipe;
+            let recipeName = recipes[0].value;
 
-            this.yummly.getRecipesFromName(recipes[0].value, (res: Response, goToSteps: boolean) => {
 
+            this.yummly.getRecipesFromName(recipeName, (res: any, goToSteps: boolean) => {
               if (!goToSteps) {
-                this.workflowService.setYummlyRecipes(res);
-                nav.push(RecipesPage);
+                nav.push(RecipesPage, {
+                  recipes: JSON.parse(res).result
+                });
               }
               else {
                 this.workflowService.setYummlyRecipeToSay(res);
-                console.log("here we go 2 ");
                 nav.push(RecipeStepPage, {
                   recipeId: res["id"]
                 });
@@ -124,8 +124,9 @@ export class HomePage {
               ingredients.push(i);
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
-              this.workflowService.setYummlyRecipes(res);
-              nav.push(RecipesPage);
+              nav.push(RecipesPage, {
+                recipes: JSON.parse(res).result
+              });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
           }
@@ -178,11 +179,12 @@ export class HomePage {
             didntUnderstood = false;
             let recipes = result['recipe'];
 
-            this.yummly.getRecipesFromName(recipes[0].value, (res: Response, goToSteps: boolean) => {
+            this.yummly.getRecipesFromName(recipes[0].value, (res: any, goToSteps: boolean) => {
 
               if (!goToSteps) {
-                this.workflowService.setYummlyRecipes(res);
-                nav.push(RecipesPage);
+                nav.push(RecipesPage, {
+                  recipes: JSON.parse(res).result
+                });
               }
               else {
                 this.workflowService.setYummlyRecipeToSay(res);
@@ -201,8 +203,9 @@ export class HomePage {
               ingredients.push(i);
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
-              this.workflowService.setYummlyRecipes(res);
-              nav.push(RecipesPage);
+              nav.push(RecipesPage, {
+                recipes: JSON.parse(res).result
+              });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
           }
@@ -214,7 +217,8 @@ export class HomePage {
               }
             );
           }
-        }
+        },
+        "lance une tartiflette"
       );
     });
   }
