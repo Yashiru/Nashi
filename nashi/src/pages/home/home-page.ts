@@ -5,6 +5,7 @@ import { TextHelper } from '../../component/textHelper/textHelper';
 import { RecipesPage } from '../recipes/recipes-page';
 import { RecipeStepPage } from '../recipe-step/recipe-step-page';
 import { AboutPage } from '../about/about-page';
+import { LoginPage } from '../loginPage/login-page';
 import { NashiBot } from '../../services/NashiBot.service';
 import { Ingredient } from "../../models/Ingredient";
 import { WorkflowService } from "../../services/Workflow.service";
@@ -55,7 +56,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    //this.launchRecordProcess();
+    this.launchRecordProcess();
   }
 
   goToAbout() {
@@ -104,7 +105,7 @@ export class HomePage {
             this.yummly.getRecipesFromName(recipeName, (res: any, goToSteps: boolean) => {
               if (!goToSteps) {
                 nav.push(RecipesPage, {
-                  recipes: JSON.parse(res).result
+                  recipes: res
                 });
               }
               else {
@@ -125,7 +126,7 @@ export class HomePage {
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
               nav.push(RecipesPage, {
-                recipes: JSON.parse(res).result
+                recipes: res.result.resources
               });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
@@ -138,8 +139,7 @@ export class HomePage {
               }
             );
           }
-        },
-        "lance une tartiflette"
+        }
       );
     });
   }
@@ -183,7 +183,7 @@ export class HomePage {
 
               if (!goToSteps) {
                 nav.push(RecipesPage, {
-                  recipes: JSON.parse(res).result
+                  recipes: res
                 });
               }
               else {
@@ -204,7 +204,7 @@ export class HomePage {
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
               nav.push(RecipesPage, {
-                recipes: JSON.parse(res).result
+                recipes: res.result.resources
               });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
@@ -217,14 +217,17 @@ export class HomePage {
               }
             );
           }
-        },
-        "lance une tartiflette"
+        }
       );
     });
   }
 
   private changeMicColor(color: any){
     this.micColor = color;
+  }
+
+  goToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 }
 

@@ -38,12 +38,11 @@ page-recipes {
         width: 100%;
     }
     .profil-picture{
-        float: right;
         width: 15% !important;
         height: 100%;
-        display: flex;
-        justify-content: center;
         align-items: center;
+        position: absolute;
+        right: 0;
 
         ion-icon{
         display: flex;
