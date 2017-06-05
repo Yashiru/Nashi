@@ -1,3 +1,12 @@
+# INSTALL
+
+- Clone project in a directory
+- Lauch Command Prompt
+- npm install
+- ionic add platform android
+- ionic run android
+
+
 # HOW TO USE SERVICES
 
 
