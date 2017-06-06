@@ -1,8 +1,10 @@
 # INSTALL
 
-- Clone project in a directory
 - Lauch Command Prompt
+- Clone project in a directory
+- cd Nashi/nashi
 - Install component : " npm install "
+- Install speechRecognition plugin : cordova plugin add https://github.com/macdonst/SpeechRecognitionPlugin
 - Create platform android : " ionic add platform android "
 - Lauch apps : " ionic run android "
 
