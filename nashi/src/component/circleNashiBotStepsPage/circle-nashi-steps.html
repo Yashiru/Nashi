@@ -1,0 +1,30 @@
+<ion-row>
+  <div class="centered">
+    <div class="circle">
+      <svg class="circle" version="1.1" id="Calque_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1500px" height="1500px"
+    viewBox="0 0 1500 1500" enable-background="new 0 0 1500 1500" xml:space="preserve">
+      <switch>
+        <g i:extraneous="self">
+          <circle [ngStyle]="circleStyle" fill="#FFFFFF" stroke="#AD1557" stroke-width="8" stroke-miterlimit="10" cx="773.111" cy="749.999" r="500"/>
+          <path display="none" fill="#FFFFFF"  stroke-width="8" stroke-miterlimit="10" d="M16.336,784.561
+            c277.778,0,384.914-7.968,490.422,207.088c71.801,146.351,137.487,181.398,223.533,236.097"/>
+          <path display="none" fill="#FFFFFF" stroke="#AD1557" stroke-width="8" stroke-miterlimit="10" d="M1228.291,567.561
+            c-277.777,0-384.914-7.968-490.422,207.088c-71.801,146.351-137.487,181.398-223.533,236.097"/>
+        </g>
+      </switch>
+    </svg>
+    </div>
+    <div class="number-step">Étape <span>{{actualstep + 1}}</span></div>
+    <div class="text">{{steps[actualstep]?.step}}</div>
+    <div class="next-step">
+      <button ion-button color="primary" clear (click)="changeStep(false)" [disabled]="backDisabled">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+
+      <button ion-button color="primary" clear (click)="changeStep(true)" [disabled]="fowardDisabled">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-row>

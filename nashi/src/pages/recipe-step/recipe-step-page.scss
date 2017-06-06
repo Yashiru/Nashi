@@ -1,0 +1,111 @@
+.header{
+  height: auto;
+  width: 90%;
+  margin: 1rem 5% ;
+  border-bottom: 1px solid #E7E7E7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .back{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .title{
+    font-weight: 100;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.no-timer{
+  width:100%;
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  font-weight: 100;
+  font-size: 1.5rem;
+  ion-icon{
+    margin-left: 1rem;
+    font-size: 2rem;
+    -webkit-animation-duration: 1.7s;
+    animation-duration: 1.7s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    transition: 0.5s;
+  }
+}
+
+.timers{
+  height: 12rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  align-items: center;
+  border-bottom: 1px solid #E7E7E7;
+  width: auto;
+  margin: 0rem 5% 1rem 0;
+  padding: 1rem 1.5rem;
+
+  .timer{
+    min-width: 50%;
+    height: 12rem;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-right: 1px solid #E7E7E7;
+    padding: 0 0.8rem 0.8rem 0.8rem;
+
+    .reason{
+      font-weight: 100;
+      font-size: 2.3rem;
+    }
+
+    .time{
+      font-size: 2rem;
+      font-weight: 100;
+      span{
+        font-size: 5.5rem;
+      }
+    }
+
+  }
+}
+
+.steps{
+  width: 100%;
+  height: 50rem;
+  padding-top: 5rem;
+
+  .next-step{
+    z-index: 10000000;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+}
+
+
+
+
+@-webkit-keyframes animListeningMic {
+  0% {
+    color: color($colors, primary, base);
+  }
+  40%{
+    color: #a5a7d8;
+  }
+  100%{
+    color: color($colors, primary, base);
+
+  }
+}

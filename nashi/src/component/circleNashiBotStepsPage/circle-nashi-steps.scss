@@ -1,0 +1,183 @@
+circle-nashi-steps{
+  ion-row{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 50% !important;
+    width: 100% !important;
+
+    .centered{
+      height: 70% !important;
+      width: 100% !important;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 7.5rem;
+
+      .circle{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg{
+          width: 50rem;
+          height: 50rem;
+          *{
+            -webkit-transition: 1s linear;
+            transition: 1s linear;
+            stroke-dasharray: 2% 208%;
+          }
+          -webkit-transition: 1s linear;
+          transition: 1s linear;
+        }
+
+        .start, .circle{
+          position: absolute;
+        }
+
+        .start{
+          -webkit-transform: translate(-10.02rem, 3.1rem);
+                  transform: translate(-10.02rem, 3.1rem);
+        }
+
+        circle{
+          -webkit-animation-duration: 1.7s;
+                  animation-duration: 1.7s;
+          -webkit-animation-iteration-count: infinite;
+                  animation-iteration-count: infinite;
+          -webkit-transition: 1s linear;
+          transition: 1s linear;
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          -webkit-animation-timing-function: cubic-bezier(0.4,0.2,0.4,0.7);
+                  animation-timing-function: cubic-bezier(0.4,0.2,0.4,0.7);
+
+        }
+      }
+
+      .number-step{
+        font-size: 15pt;
+        margin-top: -21rem;
+
+        span{
+          color: #d81b60;
+          font-size: 17pt;
+        }
+      }
+
+      .next-step{
+        width:35%;
+        height: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 95% !important;
+      }
+    }
+  }
+
+  .text{
+    position: absolute;
+    width: 60%;
+    height: auto;
+    font-weight: 100;
+    font-size: 14pt;
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+@-webkit-keyframes animListen {
+  0% {
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+  }
+  50%{
+    stroke-dasharray: 100%, 0%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-230deg);
+            transform: rotate(-230deg);
+  }
+  100%{
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+
+
+
+
+
+@keyframes animListen {
+  0% {
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+  }
+  50%{
+    stroke-dasharray: 100%, 0%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-230deg);
+            transform: rotate(-230deg);
+  }
+  100%{
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@-webkit-keyframes animLoad{
+  0% {
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+  }
+  65%{
+    stroke-dasharray: 30%, 100%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+  }
+  100%{
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes animLoad{
+  0% {
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+  }
+  65%{
+    stroke-dasharray: 30%, 70%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+  }
+  100%{
+    stroke-dasharray: 2%, 208%;
+    stroke-dashoffset:  -68%;
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
