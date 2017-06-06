@@ -92,8 +92,7 @@ export class RecipeStepPage {
           this.text = "Cliquez pour ajouter un minuteur";
           this.bot.speek("je n'ais pas compris");
         }
-      },
-      "met un minuteur 3 minutes 30"
+      }
     );
 
   }

@@ -92,9 +92,8 @@ export class CircleNashiSteps {
       if(this.actualstep == 1){
         this.backDisabled = true;
       }
-      if(this.actualstep == this.steps.length){
-        this.fowardDisabled = false;
-      }
+      this.fowardDisabled = false;
+
       this.actualstep -= 1;
     }
   }

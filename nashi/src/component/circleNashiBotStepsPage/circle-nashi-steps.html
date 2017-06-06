@@ -15,7 +15,7 @@
       </switch>
     </svg>
     </div>
-    <div class="number-step">Étape <span>{{actualstep + 1}}</span> / {{steps[actualstep]?.length || 0}}</div>
+    <div class="number-step">Étape <span>{{actualstep + 1}}</span></div>
     <div class="text">{{steps[actualstep]?.step}}</div>
     <div class="next-step">
       <button ion-button color="primary" clear (click)="changeStep(false)" [disabled]="backDisabled">

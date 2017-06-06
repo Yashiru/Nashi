@@ -126,7 +126,7 @@ export class HomePage {
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
               nav.push(RecipesPage, {
-                recipes: res.result.resources
+                recipes: JSON.parse(res).result.resources
               });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
@@ -204,7 +204,7 @@ export class HomePage {
             }
             this.yummly.getRecipeFromIngrediant(ingredients, (res: any) => {
               nav.push(RecipesPage, {
-                recipes: res.result.resources
+                recipes: JSON.parse(res).result.resources
               });
               this.bot.speek("Voici les recette que vous pouvez cuisiner");
             });
