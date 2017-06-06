@@ -4,7 +4,8 @@
 - Clone project in a directory
 - cd Nashi/nashi
 - Install component : " npm install "
-- Install speechRecognition plugin : cordova plugin add https://github.com/macdonst/SpeechRecognitionPlugin
+- Install speechRecognition plugin : " cordova plugin add https://github.com/macdonst/SpeechRecognitionPlugin "
+- Install textToSpeech plugin : " ionic plugin add cordova-plugin-tts "
 - Create platform android : " ionic add platform android "
 - Lauch apps : " ionic run android "
 
