@@ -3,12 +3,14 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { SpeechRecognitionPage  } from '../pages/ServiceSpeechRecognition/SpeechRecognitionPage'
 import { TextToSpeech } from '@ionic-native/text-to-speech';
-
+import { Home } from "../pages/Home/Home";
 import { NashiBot } from '../services/NashiBot.service';
+import { WeCook } from "../services/WeCook.service";
 
 @NgModule({
   declarations: [
     MyApp,
+    Home,
     SpeechRecognitionPage,
 
   ],
@@ -18,6 +20,7 @@ import { NashiBot } from '../services/NashiBot.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    Home,
     SpeechRecognitionPage,
 
   ],
@@ -25,7 +28,8 @@ import { NashiBot } from '../services/NashiBot.service';
   [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NashiBot,
-    TextToSpeech
+    TextToSpeech,
+    WeCook,
   ]
 })
 export class AppModule {}
